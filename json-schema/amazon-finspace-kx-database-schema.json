@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-finspace/refs/heads/main/json-schema/amazon-finspace-kx-database-schema.json",
+  "title": "KxDatabase",
+  "description": "Represents a kdb database within a FinSpace kdb environment.",
+  "type": "object",
+  "properties": {
+    "databaseName": {
+      "type": "string"
+    },
+    "databaseArn": {
+      "type": "string"
+    },
+    "environmentId": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "createdTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastModifiedTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "databaseName"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "userArn": "arn:aws:finspace:us-east-1:123456789012:kxEnvironment/kxenv-abc12345678901234/kxUser/analyst1",
+  "userName": "analyst1",
+  "iamRole": "arn:aws:iam::123456789012:role/FinSpaceKxUserRole",
+  "createTimestamp": "2025-03-01T09:00:00Z",
+  "updateTimestamp": "2025-06-01T10:00:00Z",
+  "environmentId": "kxenv-abc12345678901234"
+}

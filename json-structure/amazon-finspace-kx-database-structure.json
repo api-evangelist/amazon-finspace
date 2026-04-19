@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-finspace/refs/heads/main/json-structure/amazon-finspace-kx-database-structure.json",
+  "name": "KxDatabase",
+  "description": "Represents a kdb database within a FinSpace kdb environment.",
+  "type": "object",
+  "fields": [
+    {
+      "name": "databaseName",
+      "type": "string",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "databaseArn",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "environmentId",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "createdTimestamp",
+      "type": "datetime",
+      "description": ""
+    },
+    {
+      "name": "lastModifiedTimestamp",
+      "type": "datetime",
+      "description": ""
+    }
+  ]
+}

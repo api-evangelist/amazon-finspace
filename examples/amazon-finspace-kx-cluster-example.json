@@ -1,0 +1,31 @@
+{
+  "clusterName": "HDBCluster-001",
+  "status": "RUNNING",
+  "clusterType": "HDB",
+  "clusterDescription": "Historical database cluster for market data",
+  "capacityConfiguration": {
+    "nodeType": "kx.s.32xlarge",
+    "nodeCount": 4
+  },
+  "releaseLabel": "1.0",
+  "azMode": "SINGLE",
+  "availabilityZoneId": "use1-az1",
+  "databases": [
+    {
+      "databaseName": "MarketData",
+      "cacheConfigurations": [
+        {
+          "cacheType": "CACHE_1000",
+          "dbPaths": [
+            "/"
+          ]
+        }
+      ]
+    }
+  ],
+  "createdTimestamp": "2025-02-01T10:00:00Z",
+  "tags": {
+    "ClusterRole": "HDB",
+    "Market": "Equities"
+  }
+}

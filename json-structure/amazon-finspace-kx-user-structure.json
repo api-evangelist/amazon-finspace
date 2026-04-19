@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-finspace/refs/heads/main/json-structure/amazon-finspace-kx-user-structure.json",
+  "name": "KxUser",
+  "description": "Represents a user within a FinSpace kdb environment with associated IAM role.",
+  "type": "object",
+  "fields": [
+    {
+      "name": "userArn",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "userName",
+      "type": "string",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "iamRole",
+      "type": "string",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "createTimestamp",
+      "type": "datetime",
+      "description": ""
+    },
+    {
+      "name": "updateTimestamp",
+      "type": "datetime",
+      "description": ""
+    },
+    {
+      "name": "environmentId",
+      "type": "string",
+      "description": ""
+    }
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-finspace/refs/heads/main/json-structure/amazon-finspace-kx-environment-structure.json",
+  "name": "KxEnvironment",
+  "description": "Represents an Amazon FinSpace managed kdb (kdb+/q) environment.",
+  "type": "object",
+  "fields": [
+    {
+      "name": "environmentId",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "awsAccountId",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "",
+      "enum": [
+        "CREATE_REQUESTED",
+        "CREATING",
+        "CREATED",
+        "DELETE_REQUESTED",
+        "DELETING",
+        "DELETED",
+        "FAILED_CREATION",
+        "FAILED_DELETION",
+        "RETRY_DELETION",
+        "SUSPENDED"
+      ]
+    },
+    {
+      "name": "tgwStatus",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "dnsStatus",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "errorMessage",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "environmentArn",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "kmsKeyId",
+      "type": "string",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "dedicatedServiceAccountId",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "transitGatewayConfiguration",
+      "type": "object",
+      "description": ""
+    },
+    {
+      "name": "customDNSConfiguration",
+      "type": "array",
+      "description": ""
+    },
+    {
+      "name": "creationTimestamp",
+      "type": "datetime",
+      "description": ""
+    },
+    {
+      "name": "updateTimestamp",
+      "type": "datetime",
+      "description": ""
+    },
+    {
+      "name": "availabilityZoneIds",
+      "type": "array",
+      "description": ""
+    },
+    {
+      "name": "certificateAuthorityArn",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "tags",
+      "type": "object",
+      "description": ""
+    }
+  ]
+}

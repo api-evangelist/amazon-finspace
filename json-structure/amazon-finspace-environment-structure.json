@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-finspace/refs/heads/main/json-structure/amazon-finspace-environment-structure.json",
+  "name": "Environment",
+  "description": "Represents an Amazon FinSpace environment for financial analytics workloads.",
+  "type": "object",
+  "fields": [
+    {
+      "name": "environmentId",
+      "type": "string",
+      "description": "Unique identifier for the environment."
+    },
+    {
+      "name": "name",
+      "type": "string",
+      "description": "Name of the FinSpace environment.",
+      "required": true
+    },
+    {
+      "name": "awsAccountId",
+      "type": "string",
+      "description": "AWS account ID of the environment owner."
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "",
+      "enum": [
+        "CREATE_REQUESTED",
+        "CREATING",
+        "CREATED",
+        "DELETE_REQUESTED",
+        "DELETING",
+        "DELETED",
+        "FAILED_CREATION",
+        "FAILED_DELETION",
+        "RETRY_DELETION",
+        "SUSPENDED"
+      ]
+    },
+    {
+      "name": "environmentUrl",
+      "type": "uri",
+      "description": ""
+    },
+    {
+      "name": "description",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "environmentArn",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "sageMakerStudioDomainUrl",
+      "type": "uri",
+      "description": ""
+    },
+    {
+      "name": "kmsKeyId",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "dedicatedServiceAccountId",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "federationMode",
+      "type": "string",
+      "description": "",
+      "enum": [
+        "FEDERATED",
+        "LOCAL"
+      ]
+    },
+    {
+      "name": "tags",
+      "type": "object",
+      "description": ""
+    }
+  ]
+}

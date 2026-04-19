@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-finspace/refs/heads/main/json-schema/amazon-finspace-kx-environment-schema.json",
+  "title": "KxEnvironment",
+  "description": "Represents an Amazon FinSpace managed kdb (kdb+/q) environment.",
+  "type": "object",
+  "properties": {
+    "environmentId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "awsAccountId": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "CREATE_REQUESTED",
+        "CREATING",
+        "CREATED",
+        "DELETE_REQUESTED",
+        "DELETING",
+        "DELETED",
+        "FAILED_CREATION",
+        "FAILED_DELETION",
+        "RETRY_DELETION",
+        "SUSPENDED"
+      ]
+    },
+    "tgwStatus": {
+      "type": "string"
+    },
+    "dnsStatus": {
+      "type": "string"
+    },
+    "errorMessage": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "environmentArn": {
+      "type": "string"
+    },
+    "kmsKeyId": {
+      "type": "string"
+    },
+    "dedicatedServiceAccountId": {
+      "type": "string"
+    },
+    "transitGatewayConfiguration": {
+      "type": "object"
+    },
+    "customDNSConfiguration": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "creationTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updateTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "availabilityZoneIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "certificateAuthorityArn": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "kmsKeyId"
+  ]
+}

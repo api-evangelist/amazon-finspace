@@ -1,0 +1,230 @@
+naftiko: 1.0.0-alpha1
+info:
+  label: Amazon FinSpace Financial Analytics
+  description: Workflow capability for managing FinSpace environments, kdb clusters, databases, and users for financial analytics.
+  tags:
+  - Financial Analytics
+  - Kdb
+  - AWS
+  - Tick Data
+  - Market Data
+binds:
+- namespace: env
+  keys:
+    AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+    AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+    AWS_REGION: AWS_REGION
+capability:
+  consumes:
+  - namespace: finspace
+    ref: capabilities/shared/finspace.yaml
+  exposes:
+  - type: rest
+    port: 8080
+  - type: mcp
+    port: 9090
+  tools:
+  - name: createEnvironment
+    description: Create a new FinSpace environment
+    inputSchema:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        kmsKeyId:
+          type: string
+        federationMode:
+          type: string
+      required:
+      - name
+  - name: listEnvironments
+    description: List all FinSpace environments in the account
+    inputSchema:
+      type: object
+      properties: {}
+  - name: getEnvironment
+    description: Get details for a specific FinSpace environment
+    inputSchema:
+      type: object
+      properties:
+        environmentId:
+          type: string
+      required:
+      - environmentId
+  - name: updateEnvironment
+    description: Update a FinSpace environment
+    inputSchema:
+      type: object
+      properties:
+        environmentId:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+      required:
+      - environmentId
+  - name: deleteEnvironment
+    description: Delete a FinSpace environment
+    inputSchema:
+      type: object
+      properties:
+        environmentId:
+          type: string
+      required:
+      - environmentId
+  - name: createKxEnvironment
+    description: Create a managed kdb environment
+    inputSchema:
+      type: object
+      properties:
+        name:
+          type: string
+        kmsKeyId:
+          type: string
+        description:
+          type: string
+      required:
+      - name
+      - kmsKeyId
+  - name: listKxEnvironments
+    description: List all kdb environments
+    inputSchema:
+      type: object
+      properties: {}
+  - name: getKxEnvironment
+    description: Get a kdb environment
+    inputSchema:
+      type: object
+      properties:
+        environmentId:
+          type: string
+      required:
+      - environmentId
+  - name: createKxCluster
+    description: Create a cluster in a kdb environment
+    inputSchema:
+      type: object
+      properties:
+        environmentId:
+          type: string
+        clusterName:
+          type: string
+        clusterType:
+          type: string
+        capacityConfiguration:
+          type: object
+        releaseLabel:
+          type: string
+        azMode:
+          type: string
+      required:
+      - environmentId
+      - clusterName
+      - clusterType
+      - capacityConfiguration
+      - releaseLabel
+      - azMode
+  - name: listKxClusters
+    description: List clusters in a kdb environment
+    inputSchema:
+      type: object
+      properties:
+        environmentId:
+          type: string
+      required:
+      - environmentId
+  - name: getKxCluster
+    description: Get details for a kdb cluster
+    inputSchema:
+      type: object
+      properties:
+        environmentId:
+          type: string
+        clusterName:
+          type: string
+      required:
+      - environmentId
+      - clusterName
+  - name: deleteKxCluster
+    description: Delete a kdb cluster
+    inputSchema:
+      type: object
+      properties:
+        environmentId:
+          type: string
+        clusterName:
+          type: string
+      required:
+      - environmentId
+      - clusterName
+  - name: createKxDatabase
+    description: Create a kdb database in an environment
+    inputSchema:
+      type: object
+      properties:
+        environmentId:
+          type: string
+        databaseName:
+          type: string
+        description:
+          type: string
+      required:
+      - environmentId
+      - databaseName
+  - name: listKxDatabases
+    description: List kdb databases in an environment
+    inputSchema:
+      type: object
+      properties:
+        environmentId:
+          type: string
+      required:
+      - environmentId
+  - name: createKxUser
+    description: Create a user in a kdb environment
+    inputSchema:
+      type: object
+      properties:
+        environmentId:
+          type: string
+        userName:
+          type: string
+        iamRole:
+          type: string
+      required:
+      - environmentId
+      - userName
+      - iamRole
+  - name: listKxUsers
+    description: List users in a kdb environment
+    inputSchema:
+      type: object
+      properties:
+        environmentId:
+          type: string
+      required:
+      - environmentId
+  - name: listTagsForResource
+    description: List tags for a FinSpace resource
+    inputSchema:
+      type: object
+      properties:
+        resourceArn:
+          type: string
+      required:
+      - resourceArn
+  - name: tagResource
+    description: Add tags to a FinSpace resource
+    inputSchema:
+      type: object
+      properties:
+        resourceArn:
+          type: string
+        tags:
+          type: object
+      required:
+      - resourceArn
+      - tags

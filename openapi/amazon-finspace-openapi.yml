@@ -1,0 +1,1459 @@
+openapi: 3.1.0
+info:
+  title: Amazon FinSpace API
+  description: 'Amazon FinSpace is a data management and analytics service for the financial services industry. NOTE: AWS announced end of support effective October 7, 2026. This API provides access to
+    FinSpace environments, datasets, and Managed kdb Insights analytics environments.'
+  version: '2021-03-12'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
+  x-deprecated: 'End of support: October 7, 2026'
+externalDocs:
+  description: Amazon FinSpace API Reference
+  url: https://docs.aws.amazon.com/finspace/latest/management-api/fs-api-welcome.html
+servers:
+- url: https://finspace.{region}.amazonaws.com
+  description: Amazon FinSpace Regional Endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS Region
+tags:
+- name: Environments
+  description: Manage FinSpace environments
+- name: Kdb Environments
+  description: Manage Managed kdb Insights environments
+- name: Kdb Clusters
+  description: Manage kdb compute clusters
+- name: Kdb Databases
+  description: Manage kdb databases
+- name: Kdb Users
+  description: Manage kdb users
+- name: Tagging
+  description: Tag FinSpace resources
+security:
+- aws_signature_v4: []
+paths:
+  /environment:
+    post:
+      operationId: createEnvironment
+      summary: Amazon FinSpace Create Environment
+      description: Create a new FinSpace environment.
+      tags:
+      - Environments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEnvironmentRequest'
+            examples:
+              CreateEnvironmentRequestExample:
+                summary: Default request
+                x-microcks-default: true
+                value:
+                  name: my-finspace-env
+                  description: Prod env
+                  kmsKeyId: arn:aws:kms:us-east-1:123456789012:key/abc123
+      responses:
+        '200':
+          description: Environment created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateEnvironmentResponse'
+              examples:
+                createEnvironment200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    environmentId: env-abc123
+                    environmentArn: arn:aws:finspace:us-east-1:123456789012:environment/env-abc123
+                    environmentUrl: https://env-abc123.finspace.amazonaws.com
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      operationId: listEnvironments
+      summary: Amazon FinSpace List Environments
+      description: List the FinSpace environments in your AWS account.
+      tags:
+      - Environments
+      parameters:
+      - name: nextToken
+        in: query
+        description: Pagination token
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: Maximum results
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of environments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEnvironmentsResponse'
+              examples:
+                listEnvironments200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    environments:
+                    - &id001
+                      environmentId: env-abc123
+                      name: my-finspace-env
+                      status: CREATED
+                      environmentUrl: https://env-abc123.finspace.amazonaws.com
+                    nextToken:
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /environment/{environmentId}:
+    get:
+      operationId: getEnvironment
+      summary: Amazon FinSpace Get Environment
+      description: Returns the FinSpace environment object.
+      tags:
+      - Environments
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: Environment ID
+        schema:
+          type: string
+        example: env-abc123
+      responses:
+        '200':
+          description: Environment details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetEnvironmentResponse'
+              examples:
+                getEnvironment200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    environment: *id001
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateEnvironment
+      summary: Amazon FinSpace Update Environment
+      description: Update your FinSpace environment.
+      tags:
+      - Environments
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: Environment ID
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateEnvironmentRequest'
+            examples:
+              UpdateEnvironmentRequestExample:
+                summary: Default
+                x-microcks-default: true
+                value:
+                  name: updated-name
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetEnvironmentResponse'
+              examples:
+                updateEnvironment200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    environment: *id001
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteEnvironment
+      summary: Amazon FinSpace Delete Environment
+      description: Delete an Amazon FinSpace environment.
+      tags:
+      - Environments
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: Environment ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                deleteEnvironment200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value: {}
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /kdb/environments:
+    post:
+      operationId: createKxEnvironment
+      summary: Amazon FinSpace Create kdb Environment
+      description: Creates a managed kdb environment for the account.
+      tags:
+      - Kdb Environments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateKxEnvironmentRequest'
+            examples:
+              CreateKxEnvReq:
+                summary: Default
+                x-microcks-default: true
+                value:
+                  name: my-kdb-env
+                  kmsKeyId: arn:aws:kms:us-east-1:123456789012:key/abc123
+      responses:
+        '200':
+          description: kdb environment created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KxEnvironment'
+              examples:
+                createKxEnvironment200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value: &id002
+                    environmentId: kdbenv-abc123
+                    name: my-kdb-env
+                    status: CREATED
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      operationId: listKxEnvironments
+      summary: Amazon FinSpace List kdb Environments
+      description: Returns a list of kdb environments created in an account.
+      tags:
+      - Kdb Environments
+      parameters:
+      - name: nextToken
+        in: query
+        description: Pagination token
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: Max results
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListKxEnvironmentsResponse'
+              examples:
+                listKxEnvironments200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    environments:
+                    - *id002
+                    nextToken:
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /kdb/environments/{environmentId}:
+    get:
+      operationId: getKxEnvironment
+      summary: Amazon FinSpace Get kdb Environment
+      description: Retrieves all the relevant information about the specified kdb environment.
+      tags:
+      - Kdb Environments
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: kdb environment ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: kdb environment details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KxEnvironment'
+              examples:
+                getKxEnvironment200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value: *id002
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateKxEnvironment
+      summary: Amazon FinSpace Update kdb Environment
+      description: Updates information for the given kdb environment.
+      tags:
+      - Kdb Environments
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: Environment ID
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+            examples:
+              UpdateKxEnvReq:
+                summary: Default
+                x-microcks-default: true
+                value:
+                  name: updated-kdb-env
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KxEnvironment'
+              examples:
+                updateKxEnvironment200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value: *id002
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteKxEnvironment
+      summary: Amazon FinSpace Delete kdb Environment
+      description: Deletes the kdb environment. This action is irreversible.
+      tags:
+      - Kdb Environments
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: Environment ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                deleteKxEnvironment200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value: {}
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /kdb/environments/{environmentId}/clusters:
+    post:
+      operationId: createKxCluster
+      summary: Amazon FinSpace Create kdb Cluster
+      description: Creates a new kdb cluster.
+      tags:
+      - Kdb Clusters
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: kdb environment ID
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateKxClusterRequest'
+            examples:
+              CreateKxClusterReq:
+                summary: Default
+                x-microcks-default: true
+                value:
+                  clusterName: my-kdb-cluster
+                  clusterType: HDB
+                  releaseLabel: '1.0'
+                  azMode: MULTI
+      responses:
+        '200':
+          description: Cluster created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KxCluster'
+              examples:
+                createKxCluster200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value: &id003
+                    environmentId: kdbenv-abc123
+                    clusterName: my-kdb-cluster
+                    status: RUNNING
+                    clusterType: HDB
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      operationId: listKxClusters
+      summary: Amazon FinSpace List kdb Clusters
+      description: Returns a list of clusters created in the given kdb environment.
+      tags:
+      - Kdb Clusters
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: kdb environment ID
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: Max results
+        schema:
+          type: integer
+      - name: nextToken
+        in: query
+        description: Pagination token
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Clusters listed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListKxClustersResponse'
+              examples:
+                listKxClusters200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    kxClusterSummaries:
+                    - *id003
+                    nextToken:
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /kdb/environments/{environmentId}/clusters/{clusterName}:
+    get:
+      operationId: getKxCluster
+      summary: Amazon FinSpace Get kdb Cluster
+      description: Retrieves information about a kdb cluster.
+      tags:
+      - Kdb Clusters
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: kdb environment ID
+        schema:
+          type: string
+      - name: clusterName
+        in: path
+        required: true
+        description: Cluster name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Cluster details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KxCluster'
+              examples:
+                getKxCluster200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value: *id003
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteKxCluster
+      summary: Amazon FinSpace Delete kdb Cluster
+      description: Deletes a kdb cluster.
+      tags:
+      - Kdb Clusters
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: kdb environment ID
+        schema:
+          type: string
+      - name: clusterName
+        in: path
+        required: true
+        description: Cluster name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Cluster deleted
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                deleteKxCluster200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value: {}
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /kdb/environments/{environmentId}/databases:
+    post:
+      operationId: createKxDatabase
+      summary: Amazon FinSpace Create kdb Database
+      description: Creates a new kdb database in the environment.
+      tags:
+      - Kdb Databases
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: kdb environment ID
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateKxDatabaseRequest'
+            examples:
+              CreateKxDatabaseReq:
+                summary: Default
+                x-microcks-default: true
+                value:
+                  databaseName: equities-db
+                  clientToken: token-abc123
+      responses:
+        '200':
+          description: Database created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KxDatabase'
+              examples:
+                createKxDatabase200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value: &id004
+                    environmentId: kdbenv-abc123
+                    databaseName: equities-db
+                    createdTimestamp: '2026-04-19T12:00:00Z'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      operationId: listKxDatabases
+      summary: Amazon FinSpace List kdb Databases
+      description: Returns a list of all the databases created in the kdb environment.
+      tags:
+      - Kdb Databases
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: kdb environment ID
+        schema:
+          type: string
+      - name: nextToken
+        in: query
+        description: Pagination token
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: Max results
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Databases listed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListKxDatabasesResponse'
+              examples:
+                listKxDatabases200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    kxDatabases:
+                    - *id004
+                    nextToken:
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /kdb/environments/{environmentId}/users:
+    post:
+      operationId: createKxUser
+      summary: Amazon FinSpace Create kdb User
+      description: Creates a user in FinSpace kdb environment with an associated IAM role.
+      tags:
+      - Kdb Users
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: kdb environment ID
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateKxUserRequest'
+            examples:
+              CreateKxUserReq:
+                summary: Default
+                x-microcks-default: true
+                value:
+                  userName: analyst-user
+                  iamRole: arn:aws:iam::123456789012:role/FinSpaceKdbRole
+                  clientToken: token-abc123
+      responses:
+        '200':
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KxUser'
+              examples:
+                createKxUser200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value: &id005
+                    environmentId: kdbenv-abc123
+                    userName: analyst-user
+                    userArn: arn:aws:finspace:us-east-1:123456789012:kdbUser/kdbenv-abc123/analyst-user
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      operationId: listKxUsers
+      summary: Amazon FinSpace List kdb Users
+      description: Lists all the users in the FinSpace kdb environment.
+      tags:
+      - Kdb Users
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: kdb environment ID
+        schema:
+          type: string
+      - name: nextToken
+        in: query
+        description: Pagination token
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: Max results
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Users listed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListKxUsersResponse'
+              examples:
+                listKxUsers200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    users:
+                    - *id005
+                    nextToken:
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /tags/{resourceArn}:
+    get:
+      operationId: listTagsForResource
+      summary: Amazon FinSpace List Tags for Resource
+      description: A list of all tags for a resource.
+      tags:
+      - Tagging
+      parameters:
+      - name: resourceArn
+        in: path
+        required: true
+        description: Resource ARN
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Tags returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTagsResponse'
+              examples:
+                listTagsForResource200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    tags:
+                      Environment: production
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: tagResource
+      summary: Amazon FinSpace Tag a Resource
+      description: Adds metadata tags to a FinSpace resource.
+      tags:
+      - Tagging
+      parameters:
+      - name: resourceArn
+        in: path
+        required: true
+        description: Resource ARN
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagResourceRequest'
+            examples:
+              TagResourceReq:
+                summary: Default
+                x-microcks-default: true
+                value:
+                  tags:
+                    Environment: production
+      responses:
+        '200':
+          description: Tags applied
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                tagResource200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value: {}
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  securitySchemes:
+    aws_signature_v4:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4
+  schemas:
+    Environment:
+      type: object
+      description: A FinSpace environment
+      properties:
+        environmentId:
+          type: string
+          description: Environment ID
+          example: env-abc123
+        name:
+          type: string
+          description: Name
+          example: my-finspace-env
+        status:
+          type: string
+          description: Status
+          example: CREATED
+          enum:
+          - CREATE_REQUESTED
+          - CREATING
+          - CREATED
+          - DELETE_REQUESTED
+          - DELETING
+          - DELETED
+          - FAILED_CREATION
+          - SUSPENDED
+        environmentUrl:
+          type: string
+          description: Environment URL
+        description:
+          type: string
+          description: Description
+        environmentArn:
+          type: string
+          description: ARN
+        kmsKeyId:
+          type: string
+          description: KMS key ID
+    KxEnvironment:
+      type: object
+      description: A managed kdb Insights environment
+      properties:
+        environmentId:
+          type: string
+          description: Environment ID
+          example: kdbenv-abc123
+        name:
+          type: string
+          description: Name
+          example: my-kdb-env
+        status:
+          type: string
+          description: Status
+          example: CREATED
+          enum:
+          - CREATE_REQUESTED
+          - CREATING
+          - CREATED
+          - DELETE_REQUESTED
+          - DELETING
+          - DELETED
+          - FAILED_CREATION
+          - SUSPENDED
+        description:
+          type: string
+          description: Description
+        kmsKeyId:
+          type: string
+          description: KMS key ID
+        createdTimestamp:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        lastModifiedTimestamp:
+          type: string
+          format: date-time
+          description: Last modified
+    KxCluster:
+      type: object
+      description: A kdb compute cluster
+      properties:
+        environmentId:
+          type: string
+          description: Parent environment ID
+        clusterName:
+          type: string
+          description: Cluster name
+          example: my-kdb-cluster
+        clusterType:
+          type: string
+          description: Cluster type
+          example: HDB
+          enum:
+          - HDB
+          - RDB
+          - GATEWAY
+          - GP
+          - TICKERPLANT
+        status:
+          type: string
+          description: Status
+          example: RUNNING
+          enum:
+          - PENDING
+          - CREATING
+          - CREATE_FAILED
+          - RUNNING
+          - UPDATING
+          - DELETING
+          - DELETED
+          - DELETE_FAILED
+        releaseLabel:
+          type: string
+          description: kdb release label
+        azMode:
+          type: string
+          description: AZ mode
+          enum:
+          - SINGLE
+          - MULTI
+        createdTimestamp:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        lastModifiedTimestamp:
+          type: string
+          format: date-time
+          description: Last modified
+    KxDatabase:
+      type: object
+      description: A kdb database
+      properties:
+        environmentId:
+          type: string
+          description: Parent environment ID
+        databaseName:
+          type: string
+          description: Database name
+          example: equities-db
+        description:
+          type: string
+          description: Description
+        createdTimestamp:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        lastModifiedTimestamp:
+          type: string
+          format: date-time
+          description: Last modified
+        numBytes:
+          type: integer
+          description: Size in bytes
+        numChangesets:
+          type: integer
+          description: Number of changesets
+        numFiles:
+          type: integer
+          description: Number of files
+    KxUser:
+      type: object
+      description: A kdb user
+      properties:
+        environmentId:
+          type: string
+          description: Parent environment ID
+        userName:
+          type: string
+          description: Username
+          example: analyst-user
+        userArn:
+          type: string
+          description: User ARN
+        iamRole:
+          type: string
+          description: IAM role ARN
+        createTimestamp:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updateTimestamp:
+          type: string
+          format: date-time
+          description: Last updated
+    ErrorResponse:
+      type: object
+      description: Error response from Amazon FinSpace
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+    CreateEnvironmentRequest:
+      type: object
+      required:
+      - name
+      description: Request to create a FinSpace environment
+      properties:
+        name:
+          type: string
+          description: Name
+        description:
+          type: string
+          description: Description
+        kmsKeyId:
+          type: string
+          description: KMS key ID
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+    CreateEnvironmentResponse:
+      type: object
+      description: Response from CreateEnvironment
+      properties:
+        environmentId:
+          type: string
+          description: Environment ID
+        environmentArn:
+          type: string
+          description: ARN
+        environmentUrl:
+          type: string
+          description: URL
+    UpdateEnvironmentRequest:
+      type: object
+      description: Request to update a FinSpace environment
+      properties:
+        name:
+          type: string
+          description: New name
+        description:
+          type: string
+          description: New description
+    GetEnvironmentResponse:
+      type: object
+      description: Response from GetEnvironment
+      properties:
+        environment:
+          $ref: '#/components/schemas/Environment'
+    ListEnvironmentsResponse:
+      type: object
+      description: Response from ListEnvironments
+      properties:
+        environments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Environment'
+        nextToken:
+          type: string
+          description: Pagination token
+    CreateKxEnvironmentRequest:
+      type: object
+      required:
+      - name
+      - kmsKeyId
+      description: Request to create a kdb environment
+      properties:
+        name:
+          type: string
+          description: Name
+        description:
+          type: string
+          description: Description
+        kmsKeyId:
+          type: string
+          description: KMS key ID
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        clientToken:
+          type: string
+          description: Idempotency token
+    ListKxEnvironmentsResponse:
+      type: object
+      description: Response from ListKxEnvironments
+      properties:
+        environments:
+          type: array
+          items:
+            $ref: '#/components/schemas/KxEnvironment'
+        nextToken:
+          type: string
+          description: Pagination token
+    CreateKxClusterRequest:
+      type: object
+      required:
+      - clusterName
+      - clusterType
+      - releaseLabel
+      - azMode
+      description: Request to create a kdb cluster
+      properties:
+        clientToken:
+          type: string
+          description: Idempotency token
+        clusterName:
+          type: string
+          description: Cluster name
+        clusterType:
+          type: string
+          description: Cluster type
+          enum:
+          - HDB
+          - RDB
+          - GATEWAY
+          - GP
+          - TICKERPLANT
+        releaseLabel:
+          type: string
+          description: kdb release version
+        azMode:
+          type: string
+          description: AZ mode
+          enum:
+          - SINGLE
+          - MULTI
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+    ListKxClustersResponse:
+      type: object
+      description: Response from ListKxClusters
+      properties:
+        kxClusterSummaries:
+          type: array
+          items:
+            $ref: '#/components/schemas/KxCluster'
+        nextToken:
+          type: string
+          description: Pagination token
+    CreateKxDatabaseRequest:
+      type: object
+      required:
+      - databaseName
+      - clientToken
+      description: Request to create a kdb database
+      properties:
+        databaseName:
+          type: string
+          description: Name
+        description:
+          type: string
+          description: Description
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        clientToken:
+          type: string
+          description: Idempotency token
+    ListKxDatabasesResponse:
+      type: object
+      description: Response from ListKxDatabases
+      properties:
+        kxDatabases:
+          type: array
+          items:
+            $ref: '#/components/schemas/KxDatabase'
+        nextToken:
+          type: string
+          description: Pagination token
+    CreateKxUserRequest:
+      type: object
+      required:
+      - userName
+      - iamRole
+      - clientToken
+      description: Request to create a kdb user
+      properties:
+        userName:
+          type: string
+          description: Username
+        iamRole:
+          type: string
+          description: IAM role ARN
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        clientToken:
+          type: string
+          description: Idempotency token
+    ListKxUsersResponse:
+      type: object
+      description: Response from ListKxUsers
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/KxUser'
+        nextToken:
+          type: string
+          description: Pagination token
+    TagResourceRequest:
+      type: object
+      required:
+      - tags
+      description: Request to tag a resource
+      properties:
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+    ListTagsResponse:
+      type: object
+      description: Response from ListTagsForResource
+      properties:
+        tags:
+          type: object
+          additionalProperties:
+            type: string

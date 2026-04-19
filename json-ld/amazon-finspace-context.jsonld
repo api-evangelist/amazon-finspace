@@ -1,0 +1,99 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "finspace": "https://aws.amazon.com/finspace/vocabulary/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Environment": "finspace:Environment",
+    "KxEnvironment": "finspace:KxEnvironment",
+    "KxCluster": "finspace:KxCluster",
+    "KxDatabase": "finspace:KxDatabase",
+    "KxUser": "finspace:KxUser",
+    "environmentId": {
+      "@id": "finspace:environmentId",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "finspace:status",
+      "@type": "xsd:string"
+    },
+    "environmentUrl": {
+      "@id": "finspace:environmentUrl",
+      "@type": "xsd:anyURI"
+    },
+    "environmentArn": {
+      "@id": "finspace:environmentArn",
+      "@type": "xsd:string"
+    },
+    "awsAccountId": {
+      "@id": "finspace:awsAccountId",
+      "@type": "xsd:string"
+    },
+    "kmsKeyId": {
+      "@id": "finspace:kmsKeyId",
+      "@type": "xsd:string"
+    },
+    "federationMode": {
+      "@id": "finspace:federationMode",
+      "@type": "xsd:string"
+    },
+    "clusterName": {
+      "@id": "finspace:clusterName",
+      "@type": "xsd:string"
+    },
+    "clusterType": {
+      "@id": "finspace:clusterType",
+      "@type": "xsd:string"
+    },
+    "capacityConfiguration": {
+      "@id": "finspace:capacityConfiguration"
+    },
+    "databaseName": {
+      "@id": "finspace:databaseName",
+      "@type": "xsd:string"
+    },
+    "databaseArn": {
+      "@id": "finspace:databaseArn",
+      "@type": "xsd:string"
+    },
+    "userArn": {
+      "@id": "finspace:userArn",
+      "@type": "xsd:string"
+    },
+    "userName": {
+      "@id": "finspace:userName",
+      "@type": "xsd:string"
+    },
+    "iamRole": {
+      "@id": "finspace:iamRole",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "schema:keywords"
+    },
+    "createdTimestamp": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "lastModifiedTimestamp": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "createTimestamp": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updateTimestamp": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    }
+  }
+}

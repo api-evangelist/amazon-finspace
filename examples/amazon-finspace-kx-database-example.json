@@ -1,0 +1,8 @@
+{
+  "databaseName": "MarketData",
+  "databaseArn": "arn:aws:finspace:us-east-1:123456789012:kxEnvironment/kxenv-abc12345678901234/kxDatabase/MarketData",
+  "environmentId": "kxenv-abc12345678901234",
+  "description": "Market tick data database (trades, quotes, OHLCV)",
+  "createdTimestamp": "2025-01-20T08:00:00Z",
+  "lastModifiedTimestamp": "2025-06-15T12:00:00Z"
+}

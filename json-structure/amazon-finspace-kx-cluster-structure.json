@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-finspace/refs/heads/main/json-structure/amazon-finspace-kx-cluster-structure.json",
+  "name": "KxCluster",
+  "description": "Represents a cluster of compute resources in a FinSpace kdb environment.",
+  "type": "object",
+  "fields": [
+    {
+      "name": "clusterName",
+      "type": "string",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "status",
+      "type": "string",
+      "description": "",
+      "enum": [
+        "PENDING",
+        "CREATING",
+        "CREATE_FAILED",
+        "RUNNING",
+        "UPDATING",
+        "DELETING",
+        "DELETED",
+        "DELETE_FAILED"
+      ]
+    },
+    {
+      "name": "statusReason",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "clusterType",
+      "type": "string",
+      "description": "",
+      "required": true,
+      "enum": [
+        "HDB",
+        "RDB",
+        "GATEWAY",
+        "GP",
+        "TICKERPLANT"
+      ]
+    },
+    {
+      "name": "tickerplantLogConfiguration",
+      "type": "object",
+      "description": ""
+    },
+    {
+      "name": "volumes",
+      "type": "array",
+      "description": ""
+    },
+    {
+      "name": "databases",
+      "type": "array",
+      "description": ""
+    },
+    {
+      "name": "cacheStorageConfigurations",
+      "type": "array",
+      "description": ""
+    },
+    {
+      "name": "autoScalingConfiguration",
+      "type": "object",
+      "description": ""
+    },
+    {
+      "name": "clusterDescription",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "capacityConfiguration",
+      "type": "object",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "releaseLabel",
+      "type": "string",
+      "description": "",
+      "required": true
+    },
+    {
+      "name": "vpcConfiguration",
+      "type": "object",
+      "description": ""
+    },
+    {
+      "name": "initializationScript",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "commandLineArguments",
+      "type": "array",
+      "description": ""
+    },
+    {
+      "name": "code",
+      "type": "object",
+      "description": ""
+    },
+    {
+      "name": "executionRole",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "lastModifiedTimestamp",
+      "type": "datetime",
+      "description": ""
+    },
+    {
+      "name": "savedownStorageConfiguration",
+      "type": "object",
+      "description": ""
+    },
+    {
+      "name": "azMode",
+      "type": "string",
+      "description": "",
+      "required": true,
+      "enum": [
+        "SINGLE",
+        "MULTI"
+      ]
+    },
+    {
+      "name": "availabilityZoneId",
+      "type": "string",
+      "description": ""
+    },
+    {
+      "name": "createdTimestamp",
+      "type": "datetime",
+      "description": ""
+    },
+    {
+      "name": "tags",
+      "type": "object",
+      "description": ""
+    }
+  ]
+}

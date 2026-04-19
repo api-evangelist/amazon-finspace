@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-finspace/refs/heads/main/json-schema/amazon-finspace-kx-cluster-schema.json",
+  "title": "KxCluster",
+  "description": "Represents a cluster of compute resources in a FinSpace kdb environment.",
+  "type": "object",
+  "properties": {
+    "clusterName": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "PENDING",
+        "CREATING",
+        "CREATE_FAILED",
+        "RUNNING",
+        "UPDATING",
+        "DELETING",
+        "DELETED",
+        "DELETE_FAILED"
+      ]
+    },
+    "statusReason": {
+      "type": "string"
+    },
+    "clusterType": {
+      "type": "string",
+      "enum": [
+        "HDB",
+        "RDB",
+        "GATEWAY",
+        "GP",
+        "TICKERPLANT"
+      ]
+    },
+    "tickerplantLogConfiguration": {
+      "type": "object"
+    },
+    "volumes": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "databases": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "cacheStorageConfigurations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "autoScalingConfiguration": {
+      "type": "object"
+    },
+    "clusterDescription": {
+      "type": "string"
+    },
+    "capacityConfiguration": {
+      "type": "object",
+      "properties": {
+        "nodeType": {
+          "type": "string"
+        },
+        "nodeCount": {
+          "type": "integer"
+        }
+      }
+    },
+    "releaseLabel": {
+      "type": "string"
+    },
+    "vpcConfiguration": {
+      "type": "object"
+    },
+    "initializationScript": {
+      "type": "string"
+    },
+    "commandLineArguments": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "code": {
+      "type": "object"
+    },
+    "executionRole": {
+      "type": "string"
+    },
+    "lastModifiedTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "savedownStorageConfiguration": {
+      "type": "object"
+    },
+    "azMode": {
+      "type": "string",
+      "enum": [
+        "SINGLE",
+        "MULTI"
+      ]
+    },
+    "availabilityZoneId": {
+      "type": "string"
+    },
+    "createdTimestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "clusterName",
+    "clusterType",
+    "capacityConfiguration",
+    "releaseLabel",
+    "azMode"
+  ]
+}

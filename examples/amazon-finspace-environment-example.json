@@ -1,0 +1,15 @@
+{
+  "environmentId": "env-abc12345678901234",
+  "name": "FinSpace-Production",
+  "awsAccountId": "123456789012",
+  "status": "CREATED",
+  "environmentUrl": "https://env-abc12345678901234.finspace.amazonaws.com",
+  "description": "Production financial analytics environment",
+  "environmentArn": "arn:aws:finspace:us-east-1:123456789012:environment/env-abc12345678901234",
+  "kmsKeyId": "arn:aws:kms:us-east-1:123456789012:key/mrk-abc1234567890",
+  "federationMode": "LOCAL",
+  "tags": {
+    "Environment": "Production",
+    "Team": "DataEngineering"
+  }
+}

@@ -1,0 +1,93 @@
+vocabulary:
+  id: amazon-finspace-vocabulary
+  name: Amazon FinSpace Vocabulary
+  description: Controlled vocabulary and taxonomy for the Amazon FinSpace financial analytics and managed kdb service.
+  version: 1.0.0
+  provider: Amazon Web Services
+  deprecated: true
+  deprecationNote: Amazon FinSpace is being deprecated. Existing environments will continue until October 7, 2026.
+  resources:
+  - name: Environment
+    description: An isolated FinSpace workspace for financial data analytics.
+    operations:
+    - createEnvironment
+    - getEnvironment
+    - listEnvironments
+    - updateEnvironment
+    - deleteEnvironment
+  - name: KxEnvironment
+    description: A managed kdb (kdb+/q) compute environment for tick data workloads.
+    operations:
+    - createKxEnvironment
+    - getKxEnvironment
+    - listKxEnvironments
+    - updateKxEnvironment
+    - deleteKxEnvironment
+  - name: KxCluster
+    description: A cluster of compute resources within a kdb environment (HDB, RDB, Gateway, etc.).
+    operations:
+    - createKxCluster
+    - getKxCluster
+    - listKxClusters
+    - deleteKxCluster
+  - name: KxDatabase
+    description: A kdb database hosted within a kdb environment.
+    operations:
+    - createKxDatabase
+    - getKxDatabase
+    - listKxDatabases
+    - deleteKxDatabase
+  - name: KxUser
+    description: A user within a kdb environment, linked to an IAM role.
+    operations:
+    - createKxUser
+    - getKxUser
+    - listKxUsers
+    - updateKxUser
+    - deleteKxUser
+  - name: Tag
+    description: Key-value metadata label applied to FinSpace resources.
+    operations:
+    - listTagsForResource
+    - tagResource
+    - untagResource
+  actions:
+  - name: create
+    description: Provision a new resource.
+  - name: get
+    description: Retrieve details of a specific resource.
+  - name: list
+    description: Enumerate all resources of a type in an environment.
+  - name: update
+    description: Modify an existing resource configuration.
+  - name: delete
+    description: Remove and deprovision a resource.
+  - name: tag
+    description: Attach key-value metadata to a resource.
+  - name: untag
+    description: Remove metadata tags from a resource.
+  concepts:
+  - term: kdb+
+    definition: A high-performance columnar time-series database and vector programming language used in financial markets.
+  - term: HDB
+    definition: Historical Database — a kdb cluster storing partitioned historical tick data on disk.
+  - term: RDB
+    definition: Real-time Database — a kdb cluster holding intraday tick data in memory.
+  - term: Gateway
+    definition: A kdb cluster routing queries across HDB, RDB, and other cluster types.
+  - term: Tickerplant
+    definition: A kdb process that subscribes to real-time market data feeds and distributes to RDB/HDB.
+  - term: GP
+    definition: General Purpose cluster — flexible compute for kdb workloads outside HDB/RDB patterns.
+  - term: AZ Mode
+    definition: 'Availability Zone deployment mode: SINGLE (one AZ) or MULTI (multiple AZs for HA).'
+  - term: Release Label
+    description: The kdb+ software version label used to provision the cluster.
+  tags:
+  - Financial Analytics
+  - Kdb
+  - Tick Data
+  - Market Data
+  - Time Series
+  - AWS
+  - Deprecated
