@@ -109,7 +109,7 @@ common:
   url: capabilities/amazon-finspace-financial-analytics.yaml
 - type: Vocabulary
   url: vocabulary/amazon-finspace-vocabulary.yaml
-- type: JSON-LD
+- type: JSONLD
   url: json-ld/amazon-finspace-context.jsonld
 - type: Features
   data:
