@@ -1,0 +1,241 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon FinSpace API — Kdb Environments
+  description: 'Amazon FinSpace API — Kdb Environments. 5 operations. Lead operation: Amazon FinSpace Create kdb Environment.
+    Self-contained Naftiko capability covering one Amazon Finspace business surface.'
+  tags:
+  - Amazon Finspace
+  - Kdb Environments
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_FINSPACE_API_KEY: AMAZON_FINSPACE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-finspace-kdb-environments
+    baseUri: https://finspace.{region}.amazonaws.com
+    description: Amazon FinSpace API — Kdb Environments business capability. Self-contained, no shared references.
+    resources:
+    - name: kdb-environments
+      path: /kdb/environments
+      operations:
+      - name: createkxenvironment
+        method: POST
+        description: Amazon FinSpace Create kdb Environment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: listkxenvironments
+        method: GET
+        description: Amazon FinSpace List kdb Environments
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: nextToken
+          in: query
+          type: string
+          description: Pagination token
+        - name: maxResults
+          in: query
+          type: integer
+          description: Max results
+    - name: kdb-environments-environmentId
+      path: /kdb/environments/{environmentId}
+      operations:
+      - name: getkxenvironment
+        method: GET
+        description: Amazon FinSpace Get kdb Environment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentId
+          in: path
+          type: string
+          description: kdb environment ID
+          required: true
+      - name: updatekxenvironment
+        method: PUT
+        description: Amazon FinSpace Update kdb Environment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentId
+          in: path
+          type: string
+          description: Environment ID
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletekxenvironment
+        method: DELETE
+        description: Amazon FinSpace Delete kdb Environment
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: environmentId
+          in: path
+          type: string
+          description: Environment ID
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_FINSPACE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-finspace-kdb-environments-rest
+    port: 8080
+    description: REST adapter for Amazon FinSpace API — Kdb Environments. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/kdb/environments
+      name: kdb-environments
+      description: REST surface for kdb-environments.
+      operations:
+      - method: POST
+        name: createkxenvironment
+        description: Amazon FinSpace Create kdb Environment
+        call: amazon-finspace-kdb-environments.createkxenvironment
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: listkxenvironments
+        description: Amazon FinSpace List kdb Environments
+        call: amazon-finspace-kdb-environments.listkxenvironments
+        with:
+          nextToken: rest.nextToken
+          maxResults: rest.maxResults
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/kdb/environments/{environmentid}
+      name: kdb-environments-environmentid
+      description: REST surface for kdb-environments-environmentId.
+      operations:
+      - method: GET
+        name: getkxenvironment
+        description: Amazon FinSpace Get kdb Environment
+        call: amazon-finspace-kdb-environments.getkxenvironment
+        with:
+          environmentId: rest.environmentId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatekxenvironment
+        description: Amazon FinSpace Update kdb Environment
+        call: amazon-finspace-kdb-environments.updatekxenvironment
+        with:
+          environmentId: rest.environmentId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletekxenvironment
+        description: Amazon FinSpace Delete kdb Environment
+        call: amazon-finspace-kdb-environments.deletekxenvironment
+        with:
+          environmentId: rest.environmentId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-finspace-kdb-environments-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon FinSpace API — Kdb Environments. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: amazon-finspace-create-kdb-environment
+      description: Amazon FinSpace Create kdb Environment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-finspace-kdb-environments.createkxenvironment
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-finspace-list-kdb-environments
+      description: Amazon FinSpace List kdb Environments
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-finspace-kdb-environments.listkxenvironments
+      with:
+        nextToken: tools.nextToken
+        maxResults: tools.maxResults
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-finspace-get-kdb-environment
+      description: Amazon FinSpace Get kdb Environment
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-finspace-kdb-environments.getkxenvironment
+      with:
+        environmentId: tools.environmentId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-finspace-update-kdb-environment
+      description: Amazon FinSpace Update kdb Environment
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: amazon-finspace-kdb-environments.updatekxenvironment
+      with:
+        environmentId: tools.environmentId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-finspace-delete-kdb-environment
+      description: Amazon FinSpace Delete kdb Environment
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: amazon-finspace-kdb-environments.deletekxenvironment
+      with:
+        environmentId: tools.environmentId
+      outputParameters:
+      - type: object
+        mapping: $.

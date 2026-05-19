@@ -1,0 +1,124 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Amazon FinSpace API — Tagging
+  description: 'Amazon FinSpace API — Tagging. 2 operations. Lead operation: Amazon FinSpace List Tags for Resource. Self-contained
+    Naftiko capability covering one Amazon Finspace business surface.'
+  tags:
+  - Amazon Finspace
+  - Tagging
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    AMAZON_FINSPACE_API_KEY: AMAZON_FINSPACE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: amazon-finspace-tagging
+    baseUri: https://finspace.{region}.amazonaws.com
+    description: Amazon FinSpace API — Tagging business capability. Self-contained, no shared references.
+    resources:
+    - name: tags-resourceArn
+      path: /tags/{resourceArn}
+      operations:
+      - name: listtagsforresource
+        method: GET
+        description: Amazon FinSpace List Tags for Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceArn
+          in: path
+          type: string
+          description: Resource ARN
+          required: true
+      - name: tagresource
+        method: POST
+        description: Amazon FinSpace Tag a Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resourceArn
+          in: path
+          type: string
+          description: Resource ARN
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: apikey
+      key: Authorization
+      value: '{{env.AMAZON_FINSPACE_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: amazon-finspace-tagging-rest
+    port: 8080
+    description: REST adapter for Amazon FinSpace API — Tagging. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/tags/{resourcearn}
+      name: tags-resourcearn
+      description: REST surface for tags-resourceArn.
+      operations:
+      - method: GET
+        name: listtagsforresource
+        description: Amazon FinSpace List Tags for Resource
+        call: amazon-finspace-tagging.listtagsforresource
+        with:
+          resourceArn: rest.resourceArn
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: tagresource
+        description: Amazon FinSpace Tag a Resource
+        call: amazon-finspace-tagging.tagresource
+        with:
+          resourceArn: rest.resourceArn
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: amazon-finspace-tagging-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Amazon FinSpace API — Tagging. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: amazon-finspace-list-tags-resource
+      description: Amazon FinSpace List Tags for Resource
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: amazon-finspace-tagging.listtagsforresource
+      with:
+        resourceArn: tools.resourceArn
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: amazon-finspace-tag-resource
+      description: Amazon FinSpace Tag a Resource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: amazon-finspace-tagging.tagresource
+      with:
+        resourceArn: tools.resourceArn
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

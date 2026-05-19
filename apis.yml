@@ -1,10 +1,8 @@
 aid: amazon-finspace
 name: Amazon FinSpace
-description: >-
-  Amazon FinSpace is a data management and analytics service built specifically
-  for the financial services industry. It reduces the time you spend on
-  time-consuming data preparation tasks and makes it easy for analysts to access
-  and analyze petabytes of financial data with a few clicks.
+description: Amazon FinSpace is a data management and analytics service built specifically for the financial services industry.
+  It reduces the time you spend on time-consuming data preparation tasks and makes it easy for analysts to access and analyze
+  petabytes of financial data with a few clicks.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
@@ -13,18 +11,15 @@ tags:
 - Data Analytics
 - Data Management
 - Financial Services
-url: >-
-  https://raw.githubusercontent.com/api-evangelist/amazon-finspace/refs/heads/main/apis.yml
+url: https://raw.githubusercontent.com/api-evangelist/amazon-finspace/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-04-19'
+modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
 - aid: amazon-finspace:amazon-finspace-api
   name: Amazon FinSpace API
-  description: >-
-    The Amazon FinSpace API provides programmatic access to create and manage
-    FinSpace environments, datasets, data views, and user access controls for
-    financial data management and analytics.
+  description: The Amazon FinSpace API provides programmatic access to create and manage FinSpace environments, datasets,
+    data views, and user access controls for financial data management and analytics.
   humanURL: https://aws.amazon.com/finspace/
   baseURL: https://finspace.amazonaws.com
   tags:
@@ -74,6 +69,18 @@ apis:
     url: https://aws.amazon.com/finspace/faqs/
   - type: APIReference
     url: https://docs.aws.amazon.com/finspace/latest/management-api/fs-api-welcome.html
+  - type: NaftikoCapability
+    url: capabilities/amazon-finspace-environments.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-finspace-kdb-clusters.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-finspace-kdb-databases.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-finspace-kdb-environments.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-finspace-kdb-users.yaml
+  - type: NaftikoCapability
+    url: capabilities/amazon-finspace-tagging.yaml
 common:
 - type: Portal
   url: https://aws.amazon.com/finspace/
@@ -103,10 +110,6 @@ common:
   url: https://stackoverflow.com/questions/tagged/amazon-finspace
 - type: SpectralRules
   url: rules/amazon-finspace-spectral-rules.yml
-- type: NaftikoCapability
-  url: capabilities/shared/finspace.yaml
-- type: NaftikoCapability
-  url: capabilities/amazon-finspace-financial-analytics.yaml
 - type: Vocabulary
   url: vocabulary/amazon-finspace-vocabulary.yaml
 - type: JSONLD
@@ -158,15 +161,15 @@ common:
 - type: Integrations
   url: https://aws.amazon.com/marketplace
 integrations:
-  - name: Sign in
-  - name: Agent Mode
-  - name: 'Why AWS Marketplace?'
-  - name: Get started in AWS Marketplace
-  - name: Industry
-  - name: Resources
-  - name: Become a Channel Partner
-  - name: Sell in AWS Marketplace
-  - name: Manage Your Account
+- name: Sign in
+- name: Agent Mode
+- name: Why AWS Marketplace?
+- name: Get started in AWS Marketplace
+- name: Industry
+- name: Resources
+- name: Become a Channel Partner
+- name: Sell in AWS Marketplace
+- name: Manage Your Account
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
