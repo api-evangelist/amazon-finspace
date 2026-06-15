@@ -1,0 +1,522 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon FinSpace API",
+    "version": "2021-03-12"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Environments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon FinSpace List Environments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://finspace.{region}.amazonaws.com/environment",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Maximum results"
+              }
+            ]
+          },
+          "docs": "List the FinSpace environments in your AWS account."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Create Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://finspace.{region}.amazonaws.com/environment",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new FinSpace environment."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Get Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://finspace.{region}.amazonaws.com/environment/:environmentId",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "env-abc123",
+                "type": "path",
+                "description": "Environment ID"
+              }
+            ]
+          },
+          "docs": "Returns the FinSpace environment object."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Update Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://finspace.{region}.amazonaws.com/environment/:environmentId",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "Environment ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update your FinSpace environment."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Delete Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://finspace.{region}.amazonaws.com/environment/:environmentId",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "Environment ID"
+              }
+            ]
+          },
+          "docs": "Delete an Amazon FinSpace environment."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Kdb Environments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon FinSpace List kdb Environments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Max results"
+              }
+            ]
+          },
+          "docs": "Returns a list of kdb environments created in an account."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Create kdb Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a managed kdb environment for the account."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Get kdb Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "kdb environment ID"
+              }
+            ]
+          },
+          "docs": "Retrieves all the relevant information about the specified kdb environment."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Update kdb Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "Environment ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates information for the given kdb environment."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Delete kdb Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "Environment ID"
+              }
+            ]
+          },
+          "docs": "Deletes the kdb environment. This action is irreversible."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Kdb Clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon FinSpace List kdb Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId/clusters",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "kdb environment ID"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Max results"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token"
+              }
+            ]
+          },
+          "docs": "Returns a list of clusters created in the given kdb environment."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Create kdb Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId/clusters",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "kdb environment ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new kdb cluster."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Get kdb Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId/clusters/:clusterName",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "kdb environment ID"
+              },
+              {
+                "name": "clusterName",
+                "value": "",
+                "type": "path",
+                "description": "Cluster name"
+              }
+            ]
+          },
+          "docs": "Retrieves information about a kdb cluster."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Delete kdb Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId/clusters/:clusterName",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "kdb environment ID"
+              },
+              {
+                "name": "clusterName",
+                "value": "",
+                "type": "path",
+                "description": "Cluster name"
+              }
+            ]
+          },
+          "docs": "Deletes a kdb cluster."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Kdb Databases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon FinSpace List kdb Databases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId/databases",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "kdb environment ID"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Max results"
+              }
+            ]
+          },
+          "docs": "Returns a list of all the databases created in the kdb environment."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Create kdb Database",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId/databases",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "kdb environment ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new kdb database in the environment."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Kdb Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon FinSpace List kdb Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId/users",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "kdb environment ID"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Max results"
+              }
+            ]
+          },
+          "docs": "Lists all the users in the FinSpace kdb environment."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Create kdb User",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId/users",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "kdb environment ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a user in FinSpace kdb environment with an associated IAM role."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tagging",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon FinSpace List Tags for Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://finspace.{region}.amazonaws.com/tags/:resourceArn",
+            "params": [
+              {
+                "name": "resourceArn",
+                "value": "",
+                "type": "path",
+                "description": "Resource ARN"
+              }
+            ]
+          },
+          "docs": "A list of all tags for a resource."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Tag a Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://finspace.{region}.amazonaws.com/tags/:resourceArn",
+            "params": [
+              {
+                "name": "resourceArn",
+                "value": "",
+                "type": "path",
+                "description": "Resource ARN"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds metadata tags to a FinSpace resource."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
