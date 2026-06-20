@@ -5,7 +5,7 @@ description: >-
   reduces the time you spend on time-consuming data preparation tasks and makes it easy for analysts to access and
   analyze petabytes of financial data with a few clicks.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - AWS
   - Capital Markets
