@@ -53,15 +53,15 @@ apis:
         url: json-structure/amazon-finspace-kx-database-structure.json
       - type: JSONStructure
         url: json-structure/amazon-finspace-kx-user-structure.json
-      - type: Example
+      - type: Examples
         url: examples/amazon-finspace-environment-example.json
-      - type: Example
+      - type: Examples
         url: examples/amazon-finspace-kx-environment-example.json
-      - type: Example
+      - type: Examples
         url: examples/amazon-finspace-kx-cluster-example.json
-      - type: Example
+      - type: Examples
         url: examples/amazon-finspace-kx-database-example.json
-      - type: Example
+      - type: Examples
         url: examples/amazon-finspace-kx-user-example.json
       - type: GettingStarted
         url: https://aws.amazon.com/finspace/getting-started/
@@ -90,7 +90,7 @@ common:
     url: https://github.com/aws
   - type: Console
     url: https://console.aws.amazon.com/finspace/
-  - type: SignUp
+  - type: Signup
     url: https://portal.aws.amazon.com/billing/signup
   - type: StatusPage
     url: https://health.aws.amazon.com/health/status
