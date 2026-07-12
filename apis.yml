@@ -72,6 +72,14 @@ apis:
       - type: APIReference
         url: https://docs.aws.amazon.com/finspace/latest/management-api/fs-api-welcome.html
 common:
+  - type: TrustCenter
+    url: security/amazon-finspace-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/amazon-finspace-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/amazon-finspace-domain-security.yml
+  - type: Authentication
+    url: authentication/amazon-finspace-authentication.yml
   - type: Portal
     url: https://aws.amazon.com/finspace/
   - type: Website
