@@ -72,6 +72,8 @@ apis:
       - type: APIReference
         url: https://docs.aws.amazon.com/finspace/latest/management-api/fs-api-welcome.html
 common:
+  - type: AgenticAccess
+    url: agentic-access/amazon-finspace-agentic-access.yml
   - type: TrustCenter
     url: security/amazon-finspace-trust-center.yml
   - type: VulnerabilityDisclosure
