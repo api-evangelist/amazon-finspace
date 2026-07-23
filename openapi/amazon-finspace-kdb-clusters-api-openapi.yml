@@ -1,0 +1,358 @@
+openapi: 3.1.0
+info:
+  title: Amazon FinSpace Environments Kdb Clusters API
+  description: 'Amazon FinSpace is a data management and analytics service for the financial services industry. NOTE: AWS announced end of support effective October 7, 2026. This API provides access to FinSpace environments, datasets, and Managed kdb Insights analytics environments.'
+  version: '2021-03-12'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
+  x-deprecated: 'End of support: October 7, 2026'
+servers:
+- url: https://finspace.{region}.amazonaws.com
+  description: Amazon FinSpace Regional Endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS Region
+security:
+- aws_signature_v4: []
+tags:
+- name: Kdb Clusters
+  description: Manage kdb compute clusters
+paths:
+  /kdb/environments/{environmentId}/clusters:
+    post:
+      operationId: createKxCluster
+      summary: Amazon FinSpace Create kdb Cluster
+      description: Creates a new kdb cluster.
+      tags:
+      - Kdb Clusters
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: kdb environment ID
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateKxClusterRequest'
+            examples:
+              CreateKxClusterReq:
+                summary: Default
+                x-microcks-default: true
+                value:
+                  clusterName: my-kdb-cluster
+                  clusterType: HDB
+                  releaseLabel: '1.0'
+                  azMode: MULTI
+      responses:
+        '200':
+          description: Cluster created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KxCluster'
+              examples:
+                createKxCluster200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    environmentId: kdbenv-abc123
+                    clusterName: my-kdb-cluster
+                    status: RUNNING
+                    clusterType: HDB
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      operationId: listKxClusters
+      summary: Amazon FinSpace List kdb Clusters
+      description: Returns a list of clusters created in the given kdb environment.
+      tags:
+      - Kdb Clusters
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: kdb environment ID
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: Max results
+        schema:
+          type: integer
+      - name: nextToken
+        in: query
+        description: Pagination token
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Clusters listed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListKxClustersResponse'
+              examples:
+                listKxClusters200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    kxClusterSummaries:
+                    - environmentId: kdbenv-abc123
+                      clusterName: my-kdb-cluster
+                      status: RUNNING
+                      clusterType: HDB
+                    nextToken: null
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /kdb/environments/{environmentId}/clusters/{clusterName}:
+    get:
+      operationId: getKxCluster
+      summary: Amazon FinSpace Get kdb Cluster
+      description: Retrieves information about a kdb cluster.
+      tags:
+      - Kdb Clusters
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: kdb environment ID
+        schema:
+          type: string
+      - name: clusterName
+        in: path
+        required: true
+        description: Cluster name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Cluster details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KxCluster'
+              examples:
+                getKxCluster200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    environmentId: kdbenv-abc123
+                    clusterName: my-kdb-cluster
+                    status: RUNNING
+                    clusterType: HDB
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteKxCluster
+      summary: Amazon FinSpace Delete kdb Cluster
+      description: Deletes a kdb cluster.
+      tags:
+      - Kdb Clusters
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: kdb environment ID
+        schema:
+          type: string
+      - name: clusterName
+        in: path
+        required: true
+        description: Cluster name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Cluster deleted
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                deleteKxCluster200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value: {}
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Error response from Amazon FinSpace
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+    ListKxClustersResponse:
+      type: object
+      description: Response from ListKxClusters
+      properties:
+        kxClusterSummaries:
+          type: array
+          items:
+            $ref: '#/components/schemas/KxCluster'
+        nextToken:
+          type: string
+          description: Pagination token
+    KxCluster:
+      type: object
+      description: A kdb compute cluster
+      properties:
+        environmentId:
+          type: string
+          description: Parent environment ID
+        clusterName:
+          type: string
+          description: Cluster name
+          example: my-kdb-cluster
+        clusterType:
+          type: string
+          description: Cluster type
+          example: HDB
+          enum:
+          - HDB
+          - RDB
+          - GATEWAY
+          - GP
+          - TICKERPLANT
+        status:
+          type: string
+          description: Status
+          example: RUNNING
+          enum:
+          - PENDING
+          - CREATING
+          - CREATE_FAILED
+          - RUNNING
+          - UPDATING
+          - DELETING
+          - DELETED
+          - DELETE_FAILED
+        releaseLabel:
+          type: string
+          description: kdb release label
+        azMode:
+          type: string
+          description: AZ mode
+          enum:
+          - SINGLE
+          - MULTI
+        createdTimestamp:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        lastModifiedTimestamp:
+          type: string
+          format: date-time
+          description: Last modified
+    CreateKxClusterRequest:
+      type: object
+      required:
+      - clusterName
+      - clusterType
+      - releaseLabel
+      - azMode
+      description: Request to create a kdb cluster
+      properties:
+        clientToken:
+          type: string
+          description: Idempotency token
+        clusterName:
+          type: string
+          description: Cluster name
+        clusterType:
+          type: string
+          description: Cluster type
+          enum:
+          - HDB
+          - RDB
+          - GATEWAY
+          - GP
+          - TICKERPLANT
+        releaseLabel:
+          type: string
+          description: kdb release version
+        azMode:
+          type: string
+          description: AZ mode
+          enum:
+          - SINGLE
+          - MULTI
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+  securitySchemes:
+    aws_signature_v4:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4
+externalDocs:
+  description: Amazon FinSpace API Reference
+  url: https://docs.aws.amazon.com/finspace/latest/management-api/fs-api-welcome.html

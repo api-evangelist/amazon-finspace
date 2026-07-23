@@ -1,0 +1,393 @@
+openapi: 3.1.0
+info:
+  title: Amazon FinSpace Environments API
+  description: 'Amazon FinSpace is a data management and analytics service for the financial services industry. NOTE: AWS announced end of support effective October 7, 2026. This API provides access to FinSpace environments, datasets, and Managed kdb Insights analytics environments.'
+  version: '2021-03-12'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
+  x-deprecated: 'End of support: October 7, 2026'
+servers:
+- url: https://finspace.{region}.amazonaws.com
+  description: Amazon FinSpace Regional Endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS Region
+security:
+- aws_signature_v4: []
+tags:
+- name: Environments
+  description: Manage FinSpace environments
+paths:
+  /environment:
+    post:
+      operationId: createEnvironment
+      summary: Amazon FinSpace Create Environment
+      description: Create a new FinSpace environment.
+      tags:
+      - Environments
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEnvironmentRequest'
+            examples:
+              CreateEnvironmentRequestExample:
+                summary: Default request
+                x-microcks-default: true
+                value:
+                  name: my-finspace-env
+                  description: Prod env
+                  kmsKeyId: arn:aws:kms:us-east-1:123456789012:key/abc123
+      responses:
+        '200':
+          description: Environment created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateEnvironmentResponse'
+              examples:
+                createEnvironment200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    environmentId: env-abc123
+                    environmentArn: arn:aws:finspace:us-east-1:123456789012:environment/env-abc123
+                    environmentUrl: https://env-abc123.finspace.amazonaws.com
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      operationId: listEnvironments
+      summary: Amazon FinSpace List Environments
+      description: List the FinSpace environments in your AWS account.
+      tags:
+      - Environments
+      parameters:
+      - name: nextToken
+        in: query
+        description: Pagination token
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: Maximum results
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of environments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListEnvironmentsResponse'
+              examples:
+                listEnvironments200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    environments:
+                    - environmentId: env-abc123
+                      name: my-finspace-env
+                      status: CREATED
+                      environmentUrl: https://env-abc123.finspace.amazonaws.com
+                    nextToken: null
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /environment/{environmentId}:
+    get:
+      operationId: getEnvironment
+      summary: Amazon FinSpace Get Environment
+      description: Returns the FinSpace environment object.
+      tags:
+      - Environments
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: Environment ID
+        schema:
+          type: string
+        example: env-abc123
+      responses:
+        '200':
+          description: Environment details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetEnvironmentResponse'
+              examples:
+                getEnvironment200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    environment:
+                      environmentId: env-abc123
+                      name: my-finspace-env
+                      status: CREATED
+                      environmentUrl: https://env-abc123.finspace.amazonaws.com
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateEnvironment
+      summary: Amazon FinSpace Update Environment
+      description: Update your FinSpace environment.
+      tags:
+      - Environments
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: Environment ID
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateEnvironmentRequest'
+            examples:
+              UpdateEnvironmentRequestExample:
+                summary: Default
+                x-microcks-default: true
+                value:
+                  name: updated-name
+      responses:
+        '200':
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetEnvironmentResponse'
+              examples:
+                updateEnvironment200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    environment:
+                      environmentId: env-abc123
+                      name: my-finspace-env
+                      status: CREATED
+                      environmentUrl: https://env-abc123.finspace.amazonaws.com
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteEnvironment
+      summary: Amazon FinSpace Delete Environment
+      description: Delete an Amazon FinSpace environment.
+      tags:
+      - Environments
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: Environment ID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                deleteEnvironment200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value: {}
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ListEnvironmentsResponse:
+      type: object
+      description: Response from ListEnvironments
+      properties:
+        environments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Environment'
+        nextToken:
+          type: string
+          description: Pagination token
+    CreateEnvironmentResponse:
+      type: object
+      description: Response from CreateEnvironment
+      properties:
+        environmentId:
+          type: string
+          description: Environment ID
+        environmentArn:
+          type: string
+          description: ARN
+        environmentUrl:
+          type: string
+          description: URL
+    Environment:
+      type: object
+      description: A FinSpace environment
+      properties:
+        environmentId:
+          type: string
+          description: Environment ID
+          example: env-abc123
+        name:
+          type: string
+          description: Name
+          example: my-finspace-env
+        status:
+          type: string
+          description: Status
+          example: CREATED
+          enum:
+          - CREATE_REQUESTED
+          - CREATING
+          - CREATED
+          - DELETE_REQUESTED
+          - DELETING
+          - DELETED
+          - FAILED_CREATION
+          - SUSPENDED
+        environmentUrl:
+          type: string
+          description: Environment URL
+        description:
+          type: string
+          description: Description
+        environmentArn:
+          type: string
+          description: ARN
+        kmsKeyId:
+          type: string
+          description: KMS key ID
+    CreateEnvironmentRequest:
+      type: object
+      required:
+      - name
+      description: Request to create a FinSpace environment
+      properties:
+        name:
+          type: string
+          description: Name
+        description:
+          type: string
+          description: Description
+        kmsKeyId:
+          type: string
+          description: KMS key ID
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+    GetEnvironmentResponse:
+      type: object
+      description: Response from GetEnvironment
+      properties:
+        environment:
+          $ref: '#/components/schemas/Environment'
+    ErrorResponse:
+      type: object
+      description: Error response from Amazon FinSpace
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+    UpdateEnvironmentRequest:
+      type: object
+      description: Request to update a FinSpace environment
+      properties:
+        name:
+          type: string
+          description: New name
+        description:
+          type: string
+          description: New description
+  securitySchemes:
+    aws_signature_v4:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4
+externalDocs:
+  description: Amazon FinSpace API Reference
+  url: https://docs.aws.amazon.com/finspace/latest/management-api/fs-api-welcome.html

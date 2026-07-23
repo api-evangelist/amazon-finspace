@@ -1,0 +1,216 @@
+openapi: 3.1.0
+info:
+  title: Amazon FinSpace Environments Kdb Users API
+  description: 'Amazon FinSpace is a data management and analytics service for the financial services industry. NOTE: AWS announced end of support effective October 7, 2026. This API provides access to FinSpace environments, datasets, and Managed kdb Insights analytics environments.'
+  version: '2021-03-12'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
+  x-deprecated: 'End of support: October 7, 2026'
+servers:
+- url: https://finspace.{region}.amazonaws.com
+  description: Amazon FinSpace Regional Endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS Region
+security:
+- aws_signature_v4: []
+tags:
+- name: Kdb Users
+  description: Manage kdb users
+paths:
+  /kdb/environments/{environmentId}/users:
+    post:
+      operationId: createKxUser
+      summary: Amazon FinSpace Create kdb User
+      description: Creates a user in FinSpace kdb environment with an associated IAM role.
+      tags:
+      - Kdb Users
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: kdb environment ID
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateKxUserRequest'
+            examples:
+              CreateKxUserReq:
+                summary: Default
+                x-microcks-default: true
+                value:
+                  userName: analyst-user
+                  iamRole: arn:aws:iam::123456789012:role/FinSpaceKdbRole
+                  clientToken: token-abc123
+      responses:
+        '200':
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KxUser'
+              examples:
+                createKxUser200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    environmentId: kdbenv-abc123
+                    userName: analyst-user
+                    userArn: arn:aws:finspace:us-east-1:123456789012:kdbUser/kdbenv-abc123/analyst-user
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    get:
+      operationId: listKxUsers
+      summary: Amazon FinSpace List kdb Users
+      description: Lists all the users in the FinSpace kdb environment.
+      tags:
+      - Kdb Users
+      parameters:
+      - name: environmentId
+        in: path
+        required: true
+        description: kdb environment ID
+        schema:
+          type: string
+      - name: nextToken
+        in: query
+        description: Pagination token
+        schema:
+          type: string
+      - name: maxResults
+        in: query
+        description: Max results
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Users listed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListKxUsersResponse'
+              examples:
+                listKxUsers200Example:
+                  summary: Default
+                  x-microcks-default: true
+                  value:
+                    users:
+                    - environmentId: kdbenv-abc123
+                      userName: analyst-user
+                      userArn: arn:aws:finspace:us-east-1:123456789012:kdbUser/kdbenv-abc123/analyst-user
+                    nextToken: null
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      description: Error response from Amazon FinSpace
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+    KxUser:
+      type: object
+      description: A kdb user
+      properties:
+        environmentId:
+          type: string
+          description: Parent environment ID
+        userName:
+          type: string
+          description: Username
+          example: analyst-user
+        userArn:
+          type: string
+          description: User ARN
+        iamRole:
+          type: string
+          description: IAM role ARN
+        createTimestamp:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updateTimestamp:
+          type: string
+          format: date-time
+          description: Last updated
+    CreateKxUserRequest:
+      type: object
+      required:
+      - userName
+      - iamRole
+      - clientToken
+      description: Request to create a kdb user
+      properties:
+        userName:
+          type: string
+          description: Username
+        iamRole:
+          type: string
+          description: IAM role ARN
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        clientToken:
+          type: string
+          description: Idempotency token
+    ListKxUsersResponse:
+      type: object
+      description: Response from ListKxUsers
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/KxUser'
+        nextToken:
+          type: string
+          description: Pagination token
+  securitySchemes:
+    aws_signature_v4:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4
+externalDocs:
+  description: Amazon FinSpace API Reference
+  url: https://docs.aws.amazon.com/finspace/latest/management-api/fs-api-welcome.html
