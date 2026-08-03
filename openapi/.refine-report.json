@@ -1,0 +1,24 @@
+{
+  "provider": "amazon-finspace",
+  "sources": [
+    "amazon-finspace-environments-api-openapi.yml",
+    "amazon-finspace-kdb-clusters-api-openapi.yml",
+    "amazon-finspace-kdb-databases-api-openapi.yml",
+    "amazon-finspace-kdb-environments-api-openapi.yml",
+    "amazon-finspace-kdb-users-api-openapi.yml",
+    "amazon-finspace-tagging-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-finspace-environments-api-openapi.yml",
+    "amazon-finspace-kdb-clusters-api-openapi.yml",
+    "amazon-finspace-kdb-databases-api-openapi.yml",
+    "amazon-finspace-kdb-environments-api-openapi.yml",
+    "amazon-finspace-kdb-users-api-openapi.yml",
+    "amazon-finspace-tagging-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

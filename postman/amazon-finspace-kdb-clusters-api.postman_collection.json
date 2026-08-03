@@ -1,0 +1,999 @@
+{
+  "info": {
+    "_postman_id": "ba65aa66-3c4f-4a51-897f-4ce08b3a3c41",
+    "name": "Amazon FinSpace Environments Kdb Clusters API",
+    "description": "Amazon FinSpace is a data management and analytics service for the financial services industry. NOTE: AWS announced end of support effective October 7, 2026. This API provides access to FinSpace environments, datasets, and Managed kdb Insights analytics environments.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:38:22.000Z",
+    "updatedAt": "2026-07-28T00:38:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ba65aa66-3c4f-4a51-897f-4ce08b3a3c41"
+  },
+  "item": [
+    {
+      "name": "kdb",
+      "item": [
+        {
+          "name": "environments",
+          "item": [
+            {
+              "name": "{environmentId}",
+              "item": [
+                {
+                  "name": "clusters",
+                  "item": [
+                    {
+                      "name": "{clusterName}",
+                      "item": [
+                        {
+                          "name": "Amazon FinSpace Get kdb Cluster",
+                          "id": "c7f6726c-9236-4245-8080-d67444db27af",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/kdb/environments/:environmentId/clusters/:clusterName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "kdb",
+                                "environments",
+                                ":environmentId",
+                                "clusters",
+                                ":clusterName"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "5470cbbd-cd3e-4ccf-b8a7-fba3fa77f134",
+                                  "key": "environmentId",
+                                  "value": "<string>",
+                                  "description": "(Required) kdb environment ID"
+                                },
+                                {
+                                  "id": "b9567c41-21d7-49b7-ad45-a6bd6a70055e",
+                                  "key": "clusterName",
+                                  "value": "<string>",
+                                  "description": "(Required) Cluster name"
+                                }
+                              ]
+                            },
+                            "description": "Retrieves information about a kdb cluster."
+                          },
+                          "response": [
+                            {
+                              "id": "d8f58f21-0aa6-4cfa-a04e-6864a23ae144",
+                              "name": "Cluster details",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/kdb/environments/:environmentId/clusters/:clusterName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "kdb",
+                                    "environments",
+                                    ":environmentId",
+                                    "clusters",
+                                    ":clusterName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "environmentId"
+                                    },
+                                    {
+                                      "key": "clusterName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"environmentId\": \"<string>\",\n  \"clusterName\": \"<string>\",\n  \"clusterType\": \"RDB\",\n  \"status\": \"CREATING\",\n  \"releaseLabel\": \"<string>\",\n  \"azMode\": \"MULTI\",\n  \"createdTimestamp\": \"<dateTime>\",\n  \"lastModifiedTimestamp\": \"<dateTime>\"\n}",
+                              "createdAt": "2026-07-28T00:38:22.000Z",
+                              "updatedAt": "2026-07-28T00:38:22.000Z",
+                              "uid": "35240-d8f58f21-0aa6-4cfa-a04e-6864a23ae144"
+                            },
+                            {
+                              "id": "9a7a1257-4123-4e84-90b8-cd04d723bbab",
+                              "name": "Not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/kdb/environments/:environmentId/clusters/:clusterName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "kdb",
+                                    "environments",
+                                    ":environmentId",
+                                    "clusters",
+                                    ":clusterName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "environmentId"
+                                    },
+                                    {
+                                      "key": "clusterName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T00:38:22.000Z",
+                              "updatedAt": "2026-07-28T00:38:22.000Z",
+                              "uid": "35240-9a7a1257-4123-4e84-90b8-cd04d723bbab"
+                            },
+                            {
+                              "id": "e37d00bd-6599-4103-a8e1-d4e5a76e9ce4",
+                              "name": "Server error",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/kdb/environments/:environmentId/clusters/:clusterName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "kdb",
+                                    "environments",
+                                    ":environmentId",
+                                    "clusters",
+                                    ":clusterName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "environmentId"
+                                    },
+                                    {
+                                      "key": "clusterName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T00:38:22.000Z",
+                              "updatedAt": "2026-07-28T00:38:22.000Z",
+                              "uid": "35240-e37d00bd-6599-4103-a8e1-d4e5a76e9ce4"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T00:38:22.000Z",
+                          "updatedAt": "2026-07-28T00:38:22.000Z",
+                          "uid": "35240-c7f6726c-9236-4245-8080-d67444db27af"
+                        },
+                        {
+                          "name": "Amazon FinSpace Delete kdb Cluster",
+                          "id": "bd47b95d-9bc1-4e74-8aaf-81249c9d15fa",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/kdb/environments/:environmentId/clusters/:clusterName",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "kdb",
+                                "environments",
+                                ":environmentId",
+                                "clusters",
+                                ":clusterName"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "97ece6d9-30a2-4ac5-ba3b-a78a9c4d89d1",
+                                  "key": "environmentId",
+                                  "value": "<string>",
+                                  "description": "(Required) kdb environment ID"
+                                },
+                                {
+                                  "id": "d2883853-ac6f-48c3-af59-23424d1022aa",
+                                  "key": "clusterName",
+                                  "value": "<string>",
+                                  "description": "(Required) Cluster name"
+                                }
+                              ]
+                            },
+                            "description": "Deletes a kdb cluster."
+                          },
+                          "response": [
+                            {
+                              "id": "475a4e80-09a7-4c3b-b6e9-c940a2a17606",
+                              "name": "Cluster deleted",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/kdb/environments/:environmentId/clusters/:clusterName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "kdb",
+                                    "environments",
+                                    ":environmentId",
+                                    "clusters",
+                                    ":clusterName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "environmentId"
+                                    },
+                                    {
+                                      "key": "clusterName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{}",
+                              "createdAt": "2026-07-28T00:38:22.000Z",
+                              "updatedAt": "2026-07-28T00:38:22.000Z",
+                              "uid": "35240-475a4e80-09a7-4c3b-b6e9-c940a2a17606"
+                            },
+                            {
+                              "id": "6f30087a-b65f-4b05-8974-a6f194677878",
+                              "name": "Not found",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/kdb/environments/:environmentId/clusters/:clusterName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "kdb",
+                                    "environments",
+                                    ":environmentId",
+                                    "clusters",
+                                    ":clusterName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "environmentId"
+                                    },
+                                    {
+                                      "key": "clusterName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T00:38:22.000Z",
+                              "updatedAt": "2026-07-28T00:38:22.000Z",
+                              "uid": "35240-6f30087a-b65f-4b05-8974-a6f194677878"
+                            },
+                            {
+                              "id": "dc322859-8342-4f5b-baca-7d9134b3b3a5",
+                              "name": "Server error",
+                              "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "Authorization",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/kdb/environments/:environmentId/clusters/:clusterName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "kdb",
+                                    "environments",
+                                    ":environmentId",
+                                    "clusters",
+                                    ":clusterName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "environmentId"
+                                    },
+                                    {
+                                      "key": "clusterName"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Internal Server Error",
+                              "code": 500,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                              "createdAt": "2026-07-28T00:38:22.000Z",
+                              "updatedAt": "2026-07-28T00:38:22.000Z",
+                              "uid": "35240-dc322859-8342-4f5b-baca-7d9134b3b3a5"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T00:38:22.000Z",
+                          "updatedAt": "2026-07-28T00:38:22.000Z",
+                          "uid": "35240-bd47b95d-9bc1-4e74-8aaf-81249c9d15fa"
+                        }
+                      ],
+                      "id": "d39aab64-2645-42aa-9bdc-589ffb6631aa",
+                      "createdAt": "2026-07-28T00:38:22.000Z",
+                      "updatedAt": "2026-07-28T00:38:22.000Z",
+                      "uid": "35240-d39aab64-2645-42aa-9bdc-589ffb6631aa"
+                    },
+                    {
+                      "name": "Amazon FinSpace Create kdb Cluster",
+                      "id": "8d9759d1-0f67-4e1a-bc44-de4e8bf8fb69",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"clusterName\": \"<string>\",\n  \"clusterType\": \"HDB\",\n  \"releaseLabel\": \"<string>\",\n  \"azMode\": \"SINGLE\",\n  \"clientToken\": \"<string>\",\n  \"tags\": {\n    \"sunt1\": \"<string>\",\n    \"exercitation77\": \"<string>\",\n    \"sed2\": \"<string>\",\n    \"magna_9f\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/kdb/environments/:environmentId/clusters",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "kdb",
+                            "environments",
+                            ":environmentId",
+                            "clusters"
+                          ],
+                          "variable": [
+                            {
+                              "id": "911d5e55-38aa-4f43-9b83-a5b42897e161",
+                              "key": "environmentId",
+                              "value": "<string>",
+                              "description": "(Required) kdb environment ID"
+                            }
+                          ]
+                        },
+                        "description": "Creates a new kdb cluster."
+                      },
+                      "response": [
+                        {
+                          "id": "9a756512-d549-45a7-abf2-0dcc82cf8a98",
+                          "name": "Cluster created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"clusterName\": \"<string>\",\n  \"clusterType\": \"HDB\",\n  \"releaseLabel\": \"<string>\",\n  \"azMode\": \"SINGLE\",\n  \"clientToken\": \"<string>\",\n  \"tags\": {\n    \"sunt1\": \"<string>\",\n    \"exercitation77\": \"<string>\",\n    \"sed2\": \"<string>\",\n    \"magna_9f\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/kdb/environments/:environmentId/clusters",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "kdb",
+                                "environments",
+                                ":environmentId",
+                                "clusters"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "environmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"environmentId\": \"<string>\",\n  \"clusterName\": \"<string>\",\n  \"clusterType\": \"RDB\",\n  \"status\": \"CREATING\",\n  \"releaseLabel\": \"<string>\",\n  \"azMode\": \"MULTI\",\n  \"createdTimestamp\": \"<dateTime>\",\n  \"lastModifiedTimestamp\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T00:38:22.000Z",
+                          "updatedAt": "2026-07-28T00:38:22.000Z",
+                          "uid": "35240-9a756512-d549-45a7-abf2-0dcc82cf8a98"
+                        },
+                        {
+                          "id": "da53a700-3edf-41ae-bd4c-ede5593d8575",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"clusterName\": \"<string>\",\n  \"clusterType\": \"HDB\",\n  \"releaseLabel\": \"<string>\",\n  \"azMode\": \"SINGLE\",\n  \"clientToken\": \"<string>\",\n  \"tags\": {\n    \"sunt1\": \"<string>\",\n    \"exercitation77\": \"<string>\",\n    \"sed2\": \"<string>\",\n    \"magna_9f\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/kdb/environments/:environmentId/clusters",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "kdb",
+                                "environments",
+                                ":environmentId",
+                                "clusters"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "environmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T00:38:22.000Z",
+                          "updatedAt": "2026-07-28T00:38:22.000Z",
+                          "uid": "35240-da53a700-3edf-41ae-bd4c-ede5593d8575"
+                        },
+                        {
+                          "id": "71e62def-b73a-49b9-9e66-e1bb2f4de98e",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"clusterName\": \"<string>\",\n  \"clusterType\": \"HDB\",\n  \"releaseLabel\": \"<string>\",\n  \"azMode\": \"SINGLE\",\n  \"clientToken\": \"<string>\",\n  \"tags\": {\n    \"sunt1\": \"<string>\",\n    \"exercitation77\": \"<string>\",\n    \"sed2\": \"<string>\",\n    \"magna_9f\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/kdb/environments/:environmentId/clusters",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "kdb",
+                                "environments",
+                                ":environmentId",
+                                "clusters"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "environmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T00:38:22.000Z",
+                          "updatedAt": "2026-07-28T00:38:22.000Z",
+                          "uid": "35240-71e62def-b73a-49b9-9e66-e1bb2f4de98e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T00:38:22.000Z",
+                      "updatedAt": "2026-07-28T00:38:22.000Z",
+                      "uid": "35240-8d9759d1-0f67-4e1a-bc44-de4e8bf8fb69"
+                    },
+                    {
+                      "name": "Amazon FinSpace List kdb Clusters",
+                      "id": "3b803a20-a1ba-438d-9c5f-003d83ba4a5f",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/kdb/environments/:environmentId/clusters?maxResults=<integer>&nextToken=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "kdb",
+                            "environments",
+                            ":environmentId",
+                            "clusters"
+                          ],
+                          "query": [
+                            {
+                              "description": "Max results",
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            },
+                            {
+                              "description": "Pagination token",
+                              "key": "nextToken",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "fbd16e4d-805f-4284-8c2b-590d849e577c",
+                              "key": "environmentId",
+                              "value": "<string>",
+                              "description": "(Required) kdb environment ID"
+                            }
+                          ]
+                        },
+                        "description": "Returns a list of clusters created in the given kdb environment."
+                      },
+                      "response": [
+                        {
+                          "id": "1dd80dff-7dcb-49f9-b66c-0707f6ee6566",
+                          "name": "Clusters listed",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/kdb/environments/:environmentId/clusters?maxResults=<integer>&nextToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "kdb",
+                                "environments",
+                                ":environmentId",
+                                "clusters"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Max results",
+                                  "key": "maxResults",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Pagination token",
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "environmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"kxClusterSummaries\": [\n    {\n      \"environmentId\": \"<string>\",\n      \"clusterName\": \"<string>\",\n      \"clusterType\": \"RDB\",\n      \"status\": \"CREATING\",\n      \"releaseLabel\": \"<string>\",\n      \"azMode\": \"MULTI\",\n      \"createdTimestamp\": \"<dateTime>\",\n      \"lastModifiedTimestamp\": \"<dateTime>\"\n    },\n    {\n      \"environmentId\": \"<string>\",\n      \"clusterName\": \"<string>\",\n      \"clusterType\": \"GP\",\n      \"status\": \"DELETED\",\n      \"releaseLabel\": \"<string>\",\n      \"azMode\": \"MULTI\",\n      \"createdTimestamp\": \"<dateTime>\",\n      \"lastModifiedTimestamp\": \"<dateTime>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T00:38:22.000Z",
+                          "updatedAt": "2026-07-28T00:38:22.000Z",
+                          "uid": "35240-1dd80dff-7dcb-49f9-b66c-0707f6ee6566"
+                        },
+                        {
+                          "id": "474daa04-f6e9-4601-945e-6bf8b12344bc",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/kdb/environments/:environmentId/clusters?maxResults=<integer>&nextToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "kdb",
+                                "environments",
+                                ":environmentId",
+                                "clusters"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Max results",
+                                  "key": "maxResults",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Pagination token",
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "environmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T00:38:22.000Z",
+                          "updatedAt": "2026-07-28T00:38:22.000Z",
+                          "uid": "35240-474daa04-f6e9-4601-945e-6bf8b12344bc"
+                        },
+                        {
+                          "id": "462badc4-36a7-41a4-98ce-920a786144aa",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/kdb/environments/:environmentId/clusters?maxResults=<integer>&nextToken=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "kdb",
+                                "environments",
+                                ":environmentId",
+                                "clusters"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Max results",
+                                  "key": "maxResults",
+                                  "value": "<integer>"
+                                },
+                                {
+                                  "description": "Pagination token",
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "environmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T00:38:22.000Z",
+                          "updatedAt": "2026-07-28T00:38:22.000Z",
+                          "uid": "35240-462badc4-36a7-41a4-98ce-920a786144aa"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T00:38:22.000Z",
+                      "updatedAt": "2026-07-28T00:38:22.000Z",
+                      "uid": "35240-3b803a20-a1ba-438d-9c5f-003d83ba4a5f"
+                    }
+                  ],
+                  "id": "88583727-b061-4820-803d-741af61c928f",
+                  "createdAt": "2026-07-28T00:38:22.000Z",
+                  "updatedAt": "2026-07-28T00:38:22.000Z",
+                  "uid": "35240-88583727-b061-4820-803d-741af61c928f"
+                }
+              ],
+              "id": "a8354bec-08d3-4bfa-b07f-26cfb079307f",
+              "createdAt": "2026-07-28T00:38:22.000Z",
+              "updatedAt": "2026-07-28T00:38:22.000Z",
+              "uid": "35240-a8354bec-08d3-4bfa-b07f-26cfb079307f"
+            }
+          ],
+          "id": "9e952130-d76a-4977-8448-9d38d17a42d7",
+          "createdAt": "2026-07-28T00:38:22.000Z",
+          "updatedAt": "2026-07-28T00:38:22.000Z",
+          "uid": "35240-9e952130-d76a-4977-8448-9d38d17a42d7"
+        }
+      ],
+      "id": "c299eea6-1f3c-44f2-ae9c-8a9a0a946dc3",
+      "createdAt": "2026-07-28T00:38:22.000Z",
+      "updatedAt": "2026-07-28T00:38:22.000Z",
+      "uid": "35240-c299eea6-1f3c-44f2-ae9c-8a9a0a946dc3"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://finspace.{{region}}.amazonaws.com"
+    }
+  ]
+}

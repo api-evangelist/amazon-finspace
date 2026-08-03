@@ -1,0 +1,568 @@
+{
+  "info": {
+    "_postman_id": "a9abaf27-7468-4e65-906a-8c9005a5fcaf",
+    "name": "Amazon FinSpace Environments Kdb Users API",
+    "description": "Amazon FinSpace is a data management and analytics service for the financial services industry. NOTE: AWS announced end of support effective October 7, 2026. This API provides access to FinSpace environments, datasets, and Managed kdb Insights analytics environments.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:38:30.000Z",
+    "updatedAt": "2026-07-28T00:38:30.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-a9abaf27-7468-4e65-906a-8c9005a5fcaf"
+  },
+  "item": [
+    {
+      "name": "kdb",
+      "item": [
+        {
+          "name": "environments",
+          "item": [
+            {
+              "name": "{environmentId}",
+              "item": [
+                {
+                  "name": "users",
+                  "item": [
+                    {
+                      "name": "Amazon FinSpace Create kdb User",
+                      "id": "c6f23f34-e483-434e-8449-4320707cb70d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"userName\": \"<string>\",\n  \"iamRole\": \"<string>\",\n  \"clientToken\": \"<string>\",\n  \"tags\": {\n    \"culpa_d\": \"<string>\",\n    \"ut0cf\": \"<string>\",\n    \"temporf_a\": \"<string>\",\n    \"magnac_\": \"<string>\",\n    \"dolor34\": \"<string>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/kdb/environments/:environmentId/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "kdb",
+                            "environments",
+                            ":environmentId",
+                            "users"
+                          ],
+                          "variable": [
+                            {
+                              "id": "2d1442d1-3f7c-417d-ae00-236e36e2b7c9",
+                              "key": "environmentId",
+                              "value": "<string>",
+                              "description": "(Required) kdb environment ID"
+                            }
+                          ]
+                        },
+                        "description": "Creates a user in FinSpace kdb environment with an associated IAM role."
+                      },
+                      "response": [
+                        {
+                          "id": "a2809a72-8732-4a03-9c18-3a452a239501",
+                          "name": "User created",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"userName\": \"<string>\",\n  \"iamRole\": \"<string>\",\n  \"clientToken\": \"<string>\",\n  \"tags\": {\n    \"culpa_d\": \"<string>\",\n    \"ut0cf\": \"<string>\",\n    \"temporf_a\": \"<string>\",\n    \"magnac_\": \"<string>\",\n    \"dolor34\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/kdb/environments/:environmentId/users",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "kdb",
+                                "environments",
+                                ":environmentId",
+                                "users"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "environmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"environmentId\": \"<string>\",\n  \"userName\": \"<string>\",\n  \"userArn\": \"<string>\",\n  \"iamRole\": \"<string>\",\n  \"createTimestamp\": \"<dateTime>\",\n  \"updateTimestamp\": \"<dateTime>\"\n}",
+                          "createdAt": "2026-07-28T00:38:31.000Z",
+                          "updatedAt": "2026-07-28T00:38:31.000Z",
+                          "uid": "35240-a2809a72-8732-4a03-9c18-3a452a239501"
+                        },
+                        {
+                          "id": "3ea26ee6-e09b-435b-9c09-0f8c68b5ffe7",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"userName\": \"<string>\",\n  \"iamRole\": \"<string>\",\n  \"clientToken\": \"<string>\",\n  \"tags\": {\n    \"culpa_d\": \"<string>\",\n    \"ut0cf\": \"<string>\",\n    \"temporf_a\": \"<string>\",\n    \"magnac_\": \"<string>\",\n    \"dolor34\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/kdb/environments/:environmentId/users",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "kdb",
+                                "environments",
+                                ":environmentId",
+                                "users"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "environmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T00:38:31.000Z",
+                          "updatedAt": "2026-07-28T00:38:31.000Z",
+                          "uid": "35240-3ea26ee6-e09b-435b-9c09-0f8c68b5ffe7"
+                        },
+                        {
+                          "id": "b85120f7-7583-4440-a287-504d1fff3b85",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"userName\": \"<string>\",\n  \"iamRole\": \"<string>\",\n  \"clientToken\": \"<string>\",\n  \"tags\": {\n    \"culpa_d\": \"<string>\",\n    \"ut0cf\": \"<string>\",\n    \"temporf_a\": \"<string>\",\n    \"magnac_\": \"<string>\",\n    \"dolor34\": \"<string>\"\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/kdb/environments/:environmentId/users",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "kdb",
+                                "environments",
+                                ":environmentId",
+                                "users"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "environmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T00:38:31.000Z",
+                          "updatedAt": "2026-07-28T00:38:31.000Z",
+                          "uid": "35240-b85120f7-7583-4440-a287-504d1fff3b85"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T00:38:31.000Z",
+                      "updatedAt": "2026-07-28T00:38:31.000Z",
+                      "uid": "35240-c6f23f34-e483-434e-8449-4320707cb70d"
+                    },
+                    {
+                      "name": "Amazon FinSpace List kdb Users",
+                      "id": "72f9e0bb-10ac-46b0-9c10-9901ba874171",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/kdb/environments/:environmentId/users?nextToken=<string>&maxResults=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "kdb",
+                            "environments",
+                            ":environmentId",
+                            "users"
+                          ],
+                          "query": [
+                            {
+                              "description": "Pagination token",
+                              "key": "nextToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Max results",
+                              "key": "maxResults",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "b0f75eeb-2402-459f-86c1-c0f01eea2c8e",
+                              "key": "environmentId",
+                              "value": "<string>",
+                              "description": "(Required) kdb environment ID"
+                            }
+                          ]
+                        },
+                        "description": "Lists all the users in the FinSpace kdb environment."
+                      },
+                      "response": [
+                        {
+                          "id": "e03d6e10-951c-412b-91f4-cf8f4f62d8d8",
+                          "name": "Users listed",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/kdb/environments/:environmentId/users?nextToken=<string>&maxResults=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "kdb",
+                                "environments",
+                                ":environmentId",
+                                "users"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Pagination token",
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Max results",
+                                  "key": "maxResults",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "environmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"users\": [\n    {\n      \"environmentId\": \"<string>\",\n      \"userName\": \"<string>\",\n      \"userArn\": \"<string>\",\n      \"iamRole\": \"<string>\",\n      \"createTimestamp\": \"<dateTime>\",\n      \"updateTimestamp\": \"<dateTime>\"\n    },\n    {\n      \"environmentId\": \"<string>\",\n      \"userName\": \"<string>\",\n      \"userArn\": \"<string>\",\n      \"iamRole\": \"<string>\",\n      \"createTimestamp\": \"<dateTime>\",\n      \"updateTimestamp\": \"<dateTime>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T00:38:31.000Z",
+                          "updatedAt": "2026-07-28T00:38:31.000Z",
+                          "uid": "35240-e03d6e10-951c-412b-91f4-cf8f4f62d8d8"
+                        },
+                        {
+                          "id": "4803e748-330e-4302-a6eb-eafe27ab188f",
+                          "name": "Bad request",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/kdb/environments/:environmentId/users?nextToken=<string>&maxResults=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "kdb",
+                                "environments",
+                                ":environmentId",
+                                "users"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Pagination token",
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Max results",
+                                  "key": "maxResults",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "environmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T00:38:31.000Z",
+                          "updatedAt": "2026-07-28T00:38:31.000Z",
+                          "uid": "35240-4803e748-330e-4302-a6eb-eafe27ab188f"
+                        },
+                        {
+                          "id": "5d620d4f-53ad-42fc-a842-0736d868be42",
+                          "name": "Server error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "Authorization",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/kdb/environments/:environmentId/users?nextToken=<string>&maxResults=<integer>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "kdb",
+                                "environments",
+                                ":environmentId",
+                                "users"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Pagination token",
+                                  "key": "nextToken",
+                                  "value": "<string>"
+                                },
+                                {
+                                  "description": "Max results",
+                                  "key": "maxResults",
+                                  "value": "<integer>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "environmentId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+                          "createdAt": "2026-07-28T00:38:31.000Z",
+                          "updatedAt": "2026-07-28T00:38:31.000Z",
+                          "uid": "35240-5d620d4f-53ad-42fc-a842-0736d868be42"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T00:38:31.000Z",
+                      "updatedAt": "2026-07-28T00:38:31.000Z",
+                      "uid": "35240-72f9e0bb-10ac-46b0-9c10-9901ba874171"
+                    }
+                  ],
+                  "id": "47f65997-fdf1-42ab-ae62-2d2261ba47a7",
+                  "createdAt": "2026-07-28T00:38:31.000Z",
+                  "updatedAt": "2026-07-28T00:38:31.000Z",
+                  "uid": "35240-47f65997-fdf1-42ab-ae62-2d2261ba47a7"
+                }
+              ],
+              "id": "55206ae9-54ab-44ae-a143-6c37c741fe45",
+              "createdAt": "2026-07-28T00:38:31.000Z",
+              "updatedAt": "2026-07-28T00:38:31.000Z",
+              "uid": "35240-55206ae9-54ab-44ae-a143-6c37c741fe45"
+            }
+          ],
+          "id": "2a6da666-ca06-486f-8972-7a33b2be1b62",
+          "createdAt": "2026-07-28T00:38:31.000Z",
+          "updatedAt": "2026-07-28T00:38:31.000Z",
+          "uid": "35240-2a6da666-ca06-486f-8972-7a33b2be1b62"
+        }
+      ],
+      "id": "27b1c652-7d1a-4c94-a047-f14782552e34",
+      "createdAt": "2026-07-28T00:38:31.000Z",
+      "updatedAt": "2026-07-28T00:38:31.000Z",
+      "uid": "35240-27b1c652-7d1a-4c94-a047-f14782552e34"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://finspace.{{region}}.amazonaws.com"
+    }
+  ]
+}
