@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon FinSpace Environments Kdb Clusters API",
+    "version": "2021-03-12"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Kdb Clusters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon FinSpace List kdb Clusters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId/clusters",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "kdb environment ID"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Max results"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token"
+              }
+            ]
+          },
+          "docs": "Returns a list of clusters created in the given kdb environment."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Create kdb Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId/clusters",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "kdb environment ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new kdb cluster."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Get kdb Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId/clusters/:clusterName",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "kdb environment ID"
+              },
+              {
+                "name": "clusterName",
+                "value": "",
+                "type": "path",
+                "description": "Cluster name"
+              }
+            ]
+          },
+          "docs": "Retrieves information about a kdb cluster."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Delete kdb Cluster",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId/clusters/:clusterName",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "kdb environment ID"
+              },
+              {
+                "name": "clusterName",
+                "value": "",
+                "type": "path",
+                "description": "Cluster name"
+              }
+            ]
+          },
+          "docs": "Deletes a kdb cluster."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

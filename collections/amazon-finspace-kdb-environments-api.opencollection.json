@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon FinSpace Environments Kdb Environments API",
+    "version": "2021-03-12"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Kdb Environments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon FinSpace List kdb Environments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments",
+            "params": [
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Max results"
+              }
+            ]
+          },
+          "docs": "Returns a list of kdb environments created in an account."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Create kdb Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a managed kdb environment for the account."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Get kdb Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "kdb environment ID"
+              }
+            ]
+          },
+          "docs": "Retrieves all the relevant information about the specified kdb environment."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Update kdb Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "Environment ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates information for the given kdb environment."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Delete kdb Environment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "Environment ID"
+              }
+            ]
+          },
+          "docs": "Deletes the kdb environment. This action is irreversible."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

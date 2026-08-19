@@ -1,0 +1,80 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon FinSpace Environments Kdb Databases API",
+    "version": "2021-03-12"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Kdb Databases",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon FinSpace List kdb Databases",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId/databases",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "kdb environment ID"
+              },
+              {
+                "name": "nextToken",
+                "value": "",
+                "type": "query",
+                "description": "Pagination token"
+              },
+              {
+                "name": "maxResults",
+                "value": "",
+                "type": "query",
+                "description": "Max results"
+              }
+            ]
+          },
+          "docs": "Returns a list of all the databases created in the kdb environment."
+        },
+        {
+          "info": {
+            "name": "Amazon FinSpace Create kdb Database",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://finspace.{region}.amazonaws.com/kdb/environments/:environmentId/databases",
+            "params": [
+              {
+                "name": "environmentId",
+                "value": "",
+                "type": "path",
+                "description": "kdb environment ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new kdb database in the environment."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
