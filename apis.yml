@@ -24,6 +24,12 @@ tags:
   - Capital Markets
   - Data Analytics
   - Data Management
+  - Financial-Services
+tags_raw:
+  - AWS
+  - Capital Markets
+  - Data Analytics
+  - Data Management
   - Financial Services
 url: https://raw.githubusercontent.com/api-evangelist/amazon-finspace/refs/heads/main/apis.yml
 created: '2026-03-16'
