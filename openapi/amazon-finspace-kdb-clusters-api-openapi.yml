@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon FinSpace Environments Kdb Clusters API
   description: 'Amazon FinSpace is a data management and analytics service for the financial services industry. NOTE: AWS announced end of support effective October 7, 2026. This API provides access to FinSpace environments, datasets, and Managed kdb Insights analytics environments.'
@@ -238,16 +238,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Error response from Amazon FinSpace
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
     ListKxClustersResponse:
       type: object
       description: Response from ListKxClusters
@@ -259,6 +249,53 @@ components:
         nextToken:
           type: string
           description: Pagination token
+    ErrorResponse:
+      type: object
+      description: Error response from Amazon FinSpace
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+    CreateKxClusterRequest:
+      type: object
+      required:
+      - clusterName
+      - clusterType
+      - releaseLabel
+      - azMode
+      description: Request to create a kdb cluster
+      properties:
+        clientToken:
+          type: string
+          description: Idempotency token
+        clusterName:
+          type: string
+          description: Cluster name
+        clusterType:
+          type: string
+          description: Cluster type
+          enum:
+          - HDB
+          - RDB
+          - GATEWAY
+          - GP
+          - TICKERPLANT
+        releaseLabel:
+          type: string
+          description: kdb release version
+        azMode:
+          type: string
+          description: AZ mode
+          enum:
+          - SINGLE
+          - MULTI
+        tags:
+          type: object
+          additionalProperties:
+            type: string
     KxCluster:
       type: object
       description: A kdb compute cluster
@@ -310,43 +347,6 @@ components:
           type: string
           format: date-time
           description: Last modified
-    CreateKxClusterRequest:
-      type: object
-      required:
-      - clusterName
-      - clusterType
-      - releaseLabel
-      - azMode
-      description: Request to create a kdb cluster
-      properties:
-        clientToken:
-          type: string
-          description: Idempotency token
-        clusterName:
-          type: string
-          description: Cluster name
-        clusterType:
-          type: string
-          description: Cluster type
-          enum:
-          - HDB
-          - RDB
-          - GATEWAY
-          - GP
-          - TICKERPLANT
-        releaseLabel:
-          type: string
-          description: kdb release version
-        azMode:
-          type: string
-          description: AZ mode
-          enum:
-          - SINGLE
-          - MULTI
-        tags:
-          type: object
-          additionalProperties:
-            type: string
   securitySchemes:
     aws_signature_v4:
       type: apiKey
