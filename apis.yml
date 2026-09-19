@@ -55,6 +55,8 @@ apis:
   humanURL: https://aws.amazon.com/finspace/
   baseURL: https://finspace.amazonaws.com
   tags:
+  - Environment
+  tags_raw:
   - Environments
   properties:
   - type: OpenAPI
