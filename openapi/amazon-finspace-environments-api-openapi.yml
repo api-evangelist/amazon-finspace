@@ -313,16 +313,6 @@ components:
         kmsKeyId:
           type: string
           description: KMS key ID
-    UpdateEnvironmentRequest:
-      type: object
-      description: Request to update a FinSpace environment
-      properties:
-        name:
-          type: string
-          description: New name
-        description:
-          type: string
-          description: New description
     ListEnvironmentsResponse:
       type: object
       description: Response from ListEnvironments
@@ -334,12 +324,29 @@ components:
         nextToken:
           type: string
           description: Pagination token
-    GetEnvironmentResponse:
+    CreateEnvironmentResponse:
       type: object
-      description: Response from GetEnvironment
+      description: Response from CreateEnvironment
       properties:
-        environment:
-          $ref: '#/components/schemas/Environment'
+        environmentId:
+          type: string
+          description: Environment ID
+        environmentArn:
+          type: string
+          description: ARN
+        environmentUrl:
+          type: string
+          description: URL
+    ErrorResponse:
+      type: object
+      description: Error response from Amazon FinSpace
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
     CreateEnvironmentRequest:
       type: object
       required:
@@ -359,29 +366,22 @@ components:
           type: object
           additionalProperties:
             type: string
-    ErrorResponse:
+    GetEnvironmentResponse:
       type: object
-      description: Error response from Amazon FinSpace
+      description: Response from GetEnvironment
       properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
-    CreateEnvironmentResponse:
+        environment:
+          $ref: '#/components/schemas/Environment'
+    UpdateEnvironmentRequest:
       type: object
-      description: Response from CreateEnvironment
+      description: Request to update a FinSpace environment
       properties:
-        environmentId:
+        name:
           type: string
-          description: Environment ID
-        environmentArn:
+          description: New name
+        description:
           type: string
-          description: ARN
-        environmentUrl:
-          type: string
-          description: URL
+          description: New description
   securitySchemes:
     aws_signature_v4:
       type: apiKey

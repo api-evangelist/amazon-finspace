@@ -1,12 +1,7 @@
 {
   "provider": "amazon-finspace",
   "sources": [
-    "amazon-finspace-environments-api-openapi.yml",
-    "amazon-finspace-kdb-clusters-api-openapi.yml",
-    "amazon-finspace-kdb-databases-api-openapi.yml",
-    "amazon-finspace-kdb-environments-api-openapi.yml",
-    "amazon-finspace-kdb-users-api-openapi.yml",
-    "amazon-finspace-tagging-api-openapi.yml"
+    "_ae-authored/amazon-finspace-openapi.yml"
   ],
   "outputs": [
     "amazon-finspace-environments-api-openapi.yml",
@@ -20,7 +15,16 @@
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "amazon-finspace-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "amazon-finspace-environments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-finspace-kdb-clusters-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-finspace-kdb-databases-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-finspace-kdb-environments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-finspace-kdb-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-finspace-tagging-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

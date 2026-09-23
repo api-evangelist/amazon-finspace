@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon FinSpace Environments Tagging API
+  title: Amazon FinSpace Tagging API
   description: 'Amazon FinSpace is a data management and analytics service for the financial services industry. NOTE: AWS announced end of support effective October 7, 2026. This API provides access to FinSpace environments, datasets, and Managed kdb Insights analytics environments.'
   version: '2021-03-12'
   contact:
@@ -121,14 +121,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ListTagsResponse:
-      type: object
-      description: Response from ListTagsForResource
-      properties:
-        tags:
-          type: object
-          additionalProperties:
-            type: string
     ErrorResponse:
       type: object
       description: Error response from Amazon FinSpace
@@ -144,6 +136,14 @@ components:
       required:
       - tags
       description: Request to tag a resource
+      properties:
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+    ListTagsResponse:
+      type: object
+      description: Response from ListTagsForResource
       properties:
         tags:
           type: object
