@@ -273,17 +273,6 @@ components:
         code:
           type: string
           description: Error code
-    ListKxEnvironmentsResponse:
-      type: object
-      description: Response from ListKxEnvironments
-      properties:
-        environments:
-          type: array
-          items:
-            $ref: '#/components/schemas/KxEnvironment'
-        nextToken:
-          type: string
-          description: Pagination token
     KxEnvironment:
       type: object
       description: A managed kdb Insights environment
@@ -323,6 +312,17 @@ components:
           type: string
           format: date-time
           description: Last modified
+    ListKxEnvironmentsResponse:
+      type: object
+      description: Response from ListKxEnvironments
+      properties:
+        environments:
+          type: array
+          items:
+            $ref: '#/components/schemas/KxEnvironment'
+        nextToken:
+          type: string
+          description: Pagination token
     CreateKxEnvironmentRequest:
       type: object
       required:

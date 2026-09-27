@@ -148,31 +148,6 @@ components:
         code:
           type: string
           description: Error code
-    KxUser:
-      type: object
-      description: A kdb user
-      properties:
-        environmentId:
-          type: string
-          description: Parent environment ID
-        userName:
-          type: string
-          description: Username
-          example: analyst-user
-        userArn:
-          type: string
-          description: User ARN
-        iamRole:
-          type: string
-          description: IAM role ARN
-        createTimestamp:
-          type: string
-          format: date-time
-          description: Creation timestamp
-        updateTimestamp:
-          type: string
-          format: date-time
-          description: Last updated
     CreateKxUserRequest:
       type: object
       required:
@@ -205,6 +180,31 @@ components:
         nextToken:
           type: string
           description: Pagination token
+    KxUser:
+      type: object
+      description: A kdb user
+      properties:
+        environmentId:
+          type: string
+          description: Parent environment ID
+        userName:
+          type: string
+          description: Username
+          example: analyst-user
+        userArn:
+          type: string
+          description: User ARN
+        iamRole:
+          type: string
+          description: IAM role ARN
+        createTimestamp:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        updateTimestamp:
+          type: string
+          format: date-time
+          description: Last updated
   securitySchemes:
     aws_signature_v4:
       type: apiKey

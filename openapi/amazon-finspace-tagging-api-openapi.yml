@@ -131,19 +131,19 @@ components:
         code:
           type: string
           description: Error code
-    TagResourceRequest:
+    ListTagsResponse:
       type: object
-      required:
-      - tags
-      description: Request to tag a resource
+      description: Response from ListTagsForResource
       properties:
         tags:
           type: object
           additionalProperties:
             type: string
-    ListTagsResponse:
+    TagResourceRequest:
       type: object
-      description: Response from ListTagsForResource
+      required:
+      - tags
+      description: Request to tag a resource
       properties:
         tags:
           type: object

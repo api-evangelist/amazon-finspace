@@ -178,6 +178,17 @@ components:
         numFiles:
           type: integer
           description: Number of files
+    ListKxDatabasesResponse:
+      type: object
+      description: Response from ListKxDatabases
+      properties:
+        kxDatabases:
+          type: array
+          items:
+            $ref: '#/components/schemas/KxDatabase'
+        nextToken:
+          type: string
+          description: Pagination token
     CreateKxDatabaseRequest:
       type: object
       required:
@@ -198,17 +209,6 @@ components:
         clientToken:
           type: string
           description: Idempotency token
-    ListKxDatabasesResponse:
-      type: object
-      description: Response from ListKxDatabases
-      properties:
-        kxDatabases:
-          type: array
-          items:
-            $ref: '#/components/schemas/KxDatabase'
-        nextToken:
-          type: string
-          description: Pagination token
   securitySchemes:
     aws_signature_v4:
       type: apiKey
