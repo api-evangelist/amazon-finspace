@@ -137,16 +137,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Error response from Amazon FinSpace
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
     KxDatabase:
       type: object
       description: A kdb database
@@ -178,17 +168,16 @@ components:
         numFiles:
           type: integer
           description: Number of files
-    ListKxDatabasesResponse:
+    ErrorResponse:
       type: object
-      description: Response from ListKxDatabases
+      description: Error response from Amazon FinSpace
       properties:
-        kxDatabases:
-          type: array
-          items:
-            $ref: '#/components/schemas/KxDatabase'
-        nextToken:
+        message:
           type: string
-          description: Pagination token
+          description: Error message
+        code:
+          type: string
+          description: Error code
     CreateKxDatabaseRequest:
       type: object
       required:
@@ -209,6 +198,17 @@ components:
         clientToken:
           type: string
           description: Idempotency token
+    ListKxDatabasesResponse:
+      type: object
+      description: Response from ListKxDatabases
+      properties:
+        kxDatabases:
+          type: array
+          items:
+            $ref: '#/components/schemas/KxDatabase'
+        nextToken:
+          type: string
+          description: Pagination token
   securitySchemes:
     aws_signature_v4:
       type: apiKey

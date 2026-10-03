@@ -238,6 +238,17 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ListKxClustersResponse:
+      type: object
+      description: Response from ListKxClusters
+      properties:
+        kxClusterSummaries:
+          type: array
+          items:
+            $ref: '#/components/schemas/KxCluster'
+        nextToken:
+          type: string
+          description: Pagination token
     ErrorResponse:
       type: object
       description: Error response from Amazon FinSpace
@@ -299,17 +310,6 @@ components:
           type: string
           format: date-time
           description: Last modified
-    ListKxClustersResponse:
-      type: object
-      description: Response from ListKxClusters
-      properties:
-        kxClusterSummaries:
-          type: array
-          items:
-            $ref: '#/components/schemas/KxCluster'
-        nextToken:
-          type: string
-          description: Pagination token
     CreateKxClusterRequest:
       type: object
       required:

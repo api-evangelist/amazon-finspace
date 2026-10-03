@@ -276,22 +276,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Error response from Amazon FinSpace
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
-    GetEnvironmentResponse:
-      type: object
-      description: Response from GetEnvironment
-      properties:
-        environment:
-          $ref: '#/components/schemas/Environment'
     CreateEnvironmentRequest:
       type: object
       required:
@@ -348,6 +332,12 @@ components:
         kmsKeyId:
           type: string
           description: KMS key ID
+    GetEnvironmentResponse:
+      type: object
+      description: Response from GetEnvironment
+      properties:
+        environment:
+          $ref: '#/components/schemas/Environment'
     CreateEnvironmentResponse:
       type: object
       description: Response from CreateEnvironment
@@ -361,6 +351,16 @@ components:
         environmentUrl:
           type: string
           description: URL
+    ErrorResponse:
+      type: object
+      description: Error response from Amazon FinSpace
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
     UpdateEnvironmentRequest:
       type: object
       description: Request to update a FinSpace environment
