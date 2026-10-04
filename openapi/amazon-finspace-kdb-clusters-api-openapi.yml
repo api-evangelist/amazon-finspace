@@ -238,27 +238,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ListKxClustersResponse:
-      type: object
-      description: Response from ListKxClusters
-      properties:
-        kxClusterSummaries:
-          type: array
-          items:
-            $ref: '#/components/schemas/KxCluster'
-        nextToken:
-          type: string
-          description: Pagination token
-    ErrorResponse:
-      type: object
-      description: Error response from Amazon FinSpace
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
     KxCluster:
       type: object
       description: A kdb compute cluster
@@ -347,6 +326,27 @@ components:
           type: object
           additionalProperties:
             type: string
+    ErrorResponse:
+      type: object
+      description: Error response from Amazon FinSpace
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+    ListKxClustersResponse:
+      type: object
+      description: Response from ListKxClusters
+      properties:
+        kxClusterSummaries:
+          type: array
+          items:
+            $ref: '#/components/schemas/KxCluster'
+        nextToken:
+          type: string
+          description: Pagination token
   securitySchemes:
     aws_signature_v4:
       type: apiKey

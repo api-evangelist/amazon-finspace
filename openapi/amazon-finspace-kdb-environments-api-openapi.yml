@@ -263,27 +263,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ListKxEnvironmentsResponse:
-      type: object
-      description: Response from ListKxEnvironments
-      properties:
-        environments:
-          type: array
-          items:
-            $ref: '#/components/schemas/KxEnvironment'
-        nextToken:
-          type: string
-          description: Pagination token
-    ErrorResponse:
-      type: object
-      description: Error response from Amazon FinSpace
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
     CreateKxEnvironmentRequest:
       type: object
       required:
@@ -307,6 +286,17 @@ components:
         clientToken:
           type: string
           description: Idempotency token
+    ListKxEnvironmentsResponse:
+      type: object
+      description: Response from ListKxEnvironments
+      properties:
+        environments:
+          type: array
+          items:
+            $ref: '#/components/schemas/KxEnvironment'
+        nextToken:
+          type: string
+          description: Pagination token
     KxEnvironment:
       type: object
       description: A managed kdb Insights environment
@@ -346,6 +336,16 @@ components:
           type: string
           format: date-time
           description: Last modified
+    ErrorResponse:
+      type: object
+      description: Error response from Amazon FinSpace
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
   securitySchemes:
     aws_signature_v4:
       type: apiKey

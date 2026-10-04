@@ -163,6 +163,17 @@ components:
           type: string
           format: date-time
           description: Last updated
+    ListKxUsersResponse:
+      type: object
+      description: Response from ListKxUsers
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/KxUser'
+        nextToken:
+          type: string
+          description: Pagination token
     ErrorResponse:
       type: object
       description: Error response from Amazon FinSpace
@@ -194,17 +205,6 @@ components:
         clientToken:
           type: string
           description: Idempotency token
-    ListKxUsersResponse:
-      type: object
-      description: Response from ListKxUsers
-      properties:
-        users:
-          type: array
-          items:
-            $ref: '#/components/schemas/KxUser'
-        nextToken:
-          type: string
-          description: Pagination token
   securitySchemes:
     aws_signature_v4:
       type: apiKey

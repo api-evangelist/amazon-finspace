@@ -121,24 +121,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      description: Error response from Amazon FinSpace
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
-    ListTagsResponse:
-      type: object
-      description: Response from ListTagsForResource
-      properties:
-        tags:
-          type: object
-          additionalProperties:
-            type: string
     TagResourceRequest:
       type: object
       required:
@@ -149,6 +131,24 @@ components:
           type: object
           additionalProperties:
             type: string
+    ListTagsResponse:
+      type: object
+      description: Response from ListTagsForResource
+      properties:
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+    ErrorResponse:
+      type: object
+      description: Error response from Amazon FinSpace
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
   securitySchemes:
     aws_signature_v4:
       type: apiKey
