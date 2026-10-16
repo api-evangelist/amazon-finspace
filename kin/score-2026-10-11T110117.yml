@@ -1,24 +1,22 @@
-# Kin Score artifact — amazon-finspace — 2026-09-03T174231
+# Kin Score artifact — amazon-finspace — 2026-10-11T110117
 # The API Evangelist rating (https://github.com/api-evangelist/kin-score). Generated; do not edit.
 ---
 kin_score:
   slug: amazon-finspace
-  schema_version: 0.18.2
-  scored_at: '2026-09-03'
-  run_ts: 2026-09-03T174231
-  composite: 49.3
+  schema_version: 0.23.0
+  scored_at: '2026-10-11'
+  run_ts: 2026-10-11T110117
+  composite: 50.2
   band: developing
   facets:
-    discoverability: 64.8
-    contract_quality: 35.5
-    governance: 28.8
+    discoverability: 62.5
+    contract_quality: 34.8
+    contract_governance: 27.3
     operational_transparency: 26.3
-    developer_ergonomics: 66.7
-    commercial_clarity: 68.4
-    contract_governance: 28.8
+    developer_ergonomics: 63.1
     access_clarity: 68.4
   agent_readiness:
-    score: 30.6
+    score: 37.1
     band: agent-ready
     dimensions:
       spec_presence: true
@@ -26,7 +24,7 @@ kin_score:
       reversibility_documented: false
       mcp_server: false
       auth_clarity: bearer
-      idempotency: false
+      idempotency: verified
       error_semantics: verified
       openapi_examples: verified
       rate_limit_signal: documented
@@ -40,6 +38,12 @@ kin_score:
       protected_resource_metadata: false
       dynamic_client_registration: false
       agentic_commerce: false
+  regulatory:
+    applies: true
+    regime: Horizontal (data, software, accessibility, platform)
+    regime_id: horizontal
+    score: 35.3
+    matched_via: fallback
   provenance:
     agentic_access: derived
     contracts:
