@@ -276,12 +276,65 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    UpdateEnvironmentRequest:
+      type: object
+      description: Request to update a FinSpace environment
+      properties:
+        name:
+          type: string
+          description: New name
+        description:
+          type: string
+          description: New description
+    CreateEnvironmentRequest:
+      type: object
+      required:
+      - name
+      description: Request to create a FinSpace environment
+      properties:
+        name:
+          type: string
+          description: Name
+        description:
+          type: string
+          description: Description
+        kmsKeyId:
+          type: string
+          description: KMS key ID
+        tags:
+          type: object
+          additionalProperties:
+            type: string
     GetEnvironmentResponse:
       type: object
       description: Response from GetEnvironment
       properties:
         environment:
           $ref: '#/components/schemas/Environment'
+    ListEnvironmentsResponse:
+      type: object
+      description: Response from ListEnvironments
+      properties:
+        environments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Environment'
+        nextToken:
+          type: string
+          description: Pagination token
+    CreateEnvironmentResponse:
+      type: object
+      description: Response from CreateEnvironment
+      properties:
+        environmentId:
+          type: string
+          description: Environment ID
+        environmentArn:
+          type: string
+          description: ARN
+        environmentUrl:
+          type: string
+          description: URL
     Environment:
       type: object
       description: A FinSpace environment
@@ -319,59 +372,6 @@ components:
         kmsKeyId:
           type: string
           description: KMS key ID
-    UpdateEnvironmentRequest:
-      type: object
-      description: Request to update a FinSpace environment
-      properties:
-        name:
-          type: string
-          description: New name
-        description:
-          type: string
-          description: New description
-    CreateEnvironmentRequest:
-      type: object
-      required:
-      - name
-      description: Request to create a FinSpace environment
-      properties:
-        name:
-          type: string
-          description: Name
-        description:
-          type: string
-          description: Description
-        kmsKeyId:
-          type: string
-          description: KMS key ID
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-    ListEnvironmentsResponse:
-      type: object
-      description: Response from ListEnvironments
-      properties:
-        environments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Environment'
-        nextToken:
-          type: string
-          description: Pagination token
-    CreateEnvironmentResponse:
-      type: object
-      description: Response from CreateEnvironment
-      properties:
-        environmentId:
-          type: string
-          description: Environment ID
-        environmentArn:
-          type: string
-          description: ARN
-        environmentUrl:
-          type: string
-          description: URL
     ErrorResponse:
       type: object
       description: Error response from Amazon FinSpace
