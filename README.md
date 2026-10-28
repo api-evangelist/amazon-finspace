@@ -1,4 +1,4 @@
-# Amazon FinSpace (amazon-finspace)
+# Amazon FinSpace
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,92 +64,154 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
+> **No longer operating.** This company or product has shut down, been discontinued, or been deprecated. This profile is kept as a historical record and is not maintained or rated.
+
 Amazon FinSpace is a data management and analytics service built specifically for the financial services industry. It reduces the time you spend on time-consuming data preparation tasks and makes it easy for analysts to access and analyze petabytes of financial data with a few clicks.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/amazon-finspace/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/amazon-finspace/refs/heads/main/apis.yml)
+**Areas:** AWS · Capital Markets · Data Analytics · Data Management · Financial Services
 
-## Scope
+## Amazon FinSpace on APIs.io (historical record)
 
-- **Type:** Index
+Everything profiled for Amazon FinSpace is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/amazon-finspace/](https://apis.io/providers/amazon-finspace/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (6)
 
-- AWS
-- Capital Markets
-- Data Analytics
-- Data Management
-- Financial Services
+- [Amazon FinSpace Environments API](https://apis.io/apis/amazon-finspace/amazon-finspace-environments-api/) — Manage FinSpace environments
+- [Amazon FinSpace Kdb Clusters API](https://apis.io/apis/amazon-finspace/amazon-finspace-kdb-clusters-api/) — Manage kdb compute clusters
+- [Amazon FinSpace Kdb Databases API](https://apis.io/apis/amazon-finspace/amazon-finspace-kdb-databases-api/) — Manage kdb databases
+- [Amazon FinSpace Kdb Environments API](https://apis.io/apis/amazon-finspace/amazon-finspace-kdb-environments-api/) — Manage Managed kdb Insights environments
+- [Amazon FinSpace Kdb Users API](https://apis.io/apis/amazon-finspace/amazon-finspace-kdb-users-api/) — Manage kdb users
+- [Amazon FinSpace Tagging API](https://apis.io/apis/amazon-finspace/amazon-finspace-tagging-api/) — Tag FinSpace resources
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Amazon FinSpace API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Amazon FinSpace API provides programmatic access to create and manage FinSpace environments, datasets, data views, and user access controls for financial data management and analytics.
+- [Amazon Finspace Agentic Access](https://apis.io/agentic-access/amazon-finspace/amazon-finspace-agentic-access/)
 
-- **Human URL:** [https://aws.amazon.com/finspace/](https://aws.amazon.com/finspace/)
-- **Base URL:** `https://finspace.amazonaws.com`
+#### JSON Schema (5)
 
-#### Tags
+The data models the API reads and writes.
 
-- Data Analytics
-- Data Management
-- Financial Services
+- [Environment](https://apis.io/schemas/amazon-finspace/amazon-finspace-environment/)
+- [KxCluster](https://apis.io/schemas/amazon-finspace/amazon-finspace-kx-cluster/)
+- [KxDatabase](https://apis.io/schemas/amazon-finspace/amazon-finspace-kx-database/)
+- [KxEnvironment](https://apis.io/schemas/amazon-finspace/amazon-finspace-kx-environment/)
+- [KxUser](https://apis.io/schemas/amazon-finspace/amazon-finspace-kx-user/)
 
-#### Properties
+#### JSON Structure (5)
 
-- [Documentation](https://docs.aws.amazon.com/finspace/latest/management-api/fs-api-welcome.html)
-- [OpenAPI](openapi/amazon-finspace-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/amazon-finspace.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/amazon-finspace.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/amazon-finspace-environment-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/amazon-finspace-kx-environment-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/amazon-finspace-kx-cluster-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/amazon-finspace-kx-database-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/amazon-finspace-kx-user-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/amazon-finspace-environment-structure.json)
-- [JSON Structure](json-structure/amazon-finspace-kx-environment-structure.json)
-- [JSON Structure](json-structure/amazon-finspace-kx-cluster-structure.json)
-- [JSON Structure](json-structure/amazon-finspace-kx-database-structure.json)
-- [JSON Structure](json-structure/amazon-finspace-kx-user-structure.json)
-- [Example](examples/amazon-finspace-environment-example.json)
-- [Example](examples/amazon-finspace-kx-environment-example.json)
-- [Example](examples/amazon-finspace-kx-cluster-example.json)
-- [Example](examples/amazon-finspace-kx-database-example.json)
-- [Example](examples/amazon-finspace-kx-user-example.json)
-- [Getting Started](https://aws.amazon.com/finspace/getting-started/)
-- [Pricing](https://aws.amazon.com/finspace/pricing/)
-- [F A Q](https://aws.amazon.com/finspace/faqs/)
-- [API Reference](https://docs.aws.amazon.com/finspace/latest/management-api/fs-api-welcome.html)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Amazon Finspace Environment Structure](https://apis.io/json-structure/amazon-finspace/amazon-finspace-environment-structure/)
+- [Amazon Finspace Kx Cluster Structure](https://apis.io/json-structure/amazon-finspace/amazon-finspace-kx-cluster-structure/)
+- [Amazon Finspace Kx Database Structure](https://apis.io/json-structure/amazon-finspace/amazon-finspace-kx-database-structure/)
+- [Amazon Finspace Kx Environment Structure](https://apis.io/json-structure/amazon-finspace/amazon-finspace-kx-environment-structure/)
+- [Amazon Finspace Kx User Structure](https://apis.io/json-structure/amazon-finspace/amazon-finspace-kx-user-structure/)
 
-- [Portal](https://aws.amazon.com/finspace/)
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Amazon Finspace Context](https://apis.io/jsonld/amazon-finspace/amazon-finspace-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Amazon FinSpace Vocabulary](https://apis.io/vocabularies/amazon-finspace/amazon-finspace-vocabulary/)
+
+#### Examples (5)
+
+Example requests and responses.
+
+- [Amazon Finspace Environment Example](https://apis.io/examples/amazon-finspace/amazon-finspace-environment-example/)
+- [Amazon Finspace Kx Cluster Example](https://apis.io/examples/amazon-finspace/amazon-finspace-kx-cluster-example/)
+- [Amazon Finspace Kx Database Example](https://apis.io/examples/amazon-finspace/amazon-finspace-kx-database-example/)
+- [Amazon Finspace Kx Environment Example](https://apis.io/examples/amazon-finspace/amazon-finspace-kx-environment-example/)
+- [Amazon Finspace Kx User Example](https://apis.io/examples/amazon-finspace/amazon-finspace-kx-user-example/)
+
+#### Collections (13)
+
+Postman and Open Collection request collections.
+
+- [Amazon FinSpace API](https://apis.io/collections/amazon-finspace/open-amazon-finspace/)
+- [Amazon FinSpace Environments API](https://apis.io/collections/amazon-finspace/open-amazon-finspace-environments-api/)
+- [Amazon FinSpace Environments Kdb Clusters API](https://apis.io/collections/amazon-finspace/open-amazon-finspace-kdb-clusters-api/)
+- [Amazon FinSpace Environments Kdb Databases API](https://apis.io/collections/amazon-finspace/open-amazon-finspace-kdb-databases-api/)
+- [Amazon FinSpace Environments Kdb Environments API](https://apis.io/collections/amazon-finspace/open-amazon-finspace-kdb-environments-api/)
+- [Amazon FinSpace Environments Kdb Users API](https://apis.io/collections/amazon-finspace/open-amazon-finspace-kdb-users-api/)
+- [Amazon FinSpace Environments Tagging API](https://apis.io/collections/amazon-finspace/open-amazon-finspace-tagging-api/)
+- [Amazon FinSpace Environments API](https://apis.io/collections/amazon-finspace/postman-amazon-finspace-environments-api/)
+- [Amazon FinSpace Environments Kdb Clusters API](https://apis.io/collections/amazon-finspace/postman-amazon-finspace-kdb-clusters-api/)
+- [Amazon FinSpace Environments Kdb Databases API](https://apis.io/collections/amazon-finspace/postman-amazon-finspace-kdb-databases-api/)
+- [Amazon FinSpace Environments Kdb Environments API](https://apis.io/collections/amazon-finspace/postman-amazon-finspace-kdb-environments-api/)
+- [Amazon FinSpace Environments Kdb Users API](https://apis.io/collections/amazon-finspace/postman-amazon-finspace-kdb-users-api/)
+- [Amazon FinSpace Environments Tagging API](https://apis.io/collections/amazon-finspace/postman-amazon-finspace-tagging-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Amazon FinSpace — jsonschema rules](https://apis.io/rules/amazon-finspace/amazon-finspace-jsonschema-spectral-rules/)
+- [Amazon FinSpace API Rules](https://apis.io/rules/amazon-finspace/amazon-finspace-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Amazon Finspace Authentication](https://apis.io/security/amazon-finspace/amazon-finspace-authentication/)
+- [Amazon Finspace Domain Security](https://apis.io/security/amazon-finspace/amazon-finspace-domain-security/)
+- [Amazon Finspace Trust Center](https://apis.io/security/amazon-finspace/amazon-finspace-trust-center/)
+- [Amazon Finspace Vulnerability Disclosure](https://apis.io/security/amazon-finspace/amazon-finspace-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Amazon Finspace Plans Pricing](https://apis.io/plans/amazon-finspace/amazon-finspace-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Amazon Finspace Rate Limits](https://apis.io/rate-limits/amazon-finspace/amazon-finspace-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Amazon Finspace Finops](https://apis.io/finops/amazon-finspace/amazon-finspace-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://aws.amazon.com/finspace/)
 - [Documentation](https://docs.aws.amazon.com/finspace/)
-- [Terms of Service](https://aws.amazon.com/service-terms/)
-- [Privacy Policy](https://aws.amazon.com/privacy/)
 - [Support](https://aws.amazon.com/premiumsupport/)
 - [Blog](https://aws.amazon.com/blogs/industries/financial-services/)
-- [GitHub Organization](https://github.com/aws)
-- [Console](https://console.aws.amazon.com/finspace/)
-- [Sign Up](https://portal.aws.amazon.com/billing/signup)
-- [Status Page](https://health.aws.amazon.com/health/status)
-- [YouTube](https://www.youtube.com/user/AmazonWebServices)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/amazon-finspace)
-- [Spectral Rules](rules/amazon-finspace-spectral-rules.yml)
-- [Vocabulary](vocabulary/amazon-finspace-vocabulary.yaml)
-- [JSON-LD](json-ld/amazon-finspace-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Features](undefined)
-- [Use Cases](undefined)
-- [Integrations](undefined)
-- [Integrations](https://aws.amazon.com/marketplace)
+- [Terms of service](https://aws.amazon.com/service-terms/)
+- [Privacy policy](https://aws.amazon.com/privacy/)
+- [GitHub](https://github.com/aws)
+- [Status](https://health.aws.amazon.com/health/status)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Not rated** — this company is recorded as no longer operating, so no score is published. If it is in fact operating, say so on this repository and it will be re-profiled.
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Amazon FinSpace: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/amazon-finspace/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
