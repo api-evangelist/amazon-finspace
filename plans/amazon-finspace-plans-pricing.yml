@@ -1,0 +1,132 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-28'
+method: searched
+source: https://aws.amazon.com/finspace/pricing/
+sources:
+- https://aws.amazon.com/finspace/pricing/
+provenance:
+  tool: engine/economics/harvest_pricing.py
+  run: 20261028T161713
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: usage-other
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-28'
+published: true
+note: Managed kdb Insights compute/storage price tables render dynamically (placeholder tokens), so only
+  example-derived rates (e.g. $0.0264 per GB-month, $1.26 per hour) appear in prose. Page also notes support
+  ends October 7, 2026 and offers 'Request a pricing quote'. Dataset Browser prices are explicit.
+plan_count: 7
+currency: USD
+plans:
+- name: Dataset Browser - Users
+  price_text: $150 per month for each registered user in FinSpace
+  price: 150
+  currency: USD
+  period: month
+  unit: registered user
+- name: Dataset Browser - Storage
+  price_text: $0.14 per month for each GB of data you store in FinSpace
+  price: 0.14
+  currency: USD
+  period: month
+  unit: GB
+- name: FinSpace Cluster Small (2 nodes)
+  price_text: $0.14
+  price: 0.14
+  currency: USD
+  period: per-use
+  unit: per minute
+- name: FinSpace Cluster Medium (4 nodes)
+  price_text: $0.25
+  price: 0.25
+  currency: USD
+  period: per-use
+  unit: per minute
+- name: FinSpace Cluster Large (10 nodes)
+  price_text: $0.50
+  price: 0.5
+  currency: USD
+  period: per-use
+  unit: per minute
+- name: FinSpace Cluster X-Large (20 nodes)
+  price_text: $1.00
+  price: 1.0
+  currency: USD
+  period: per-use
+  unit: per minute
+- name: FinSpace Cluster XX-Large (40 nodes)
+  price_text: $2.00
+  price: 2.0
+  currency: USD
+  period: per-use
+  unit: per minute
+x-canonical:
+  generated: '2026-11-01'
+  vocabulary: engine/economics/plans-canonical.yml
+  models:
+  - hybrid
+  - seat
+  units:
+  - compute
+  - data
+  - seat
+  plans:
+  - name: Dataset Browser - Users
+    access: other
+    model: seat
+    model_how: derived
+    units:
+    - seat
+    periods:
+    - month
+  - name: Dataset Browser - Storage
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - data
+    periods:
+    - month
+  - name: FinSpace Cluster Small (2 nodes)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
+  - name: FinSpace Cluster Medium (4 nodes)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
+  - name: FinSpace Cluster Large (10 nodes)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
+  - name: FinSpace Cluster X-Large (20 nodes)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
+  - name: FinSpace Cluster XX-Large (40 nodes)
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - compute
+    periods:
+    - other
